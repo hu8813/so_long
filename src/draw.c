@@ -30,7 +30,8 @@ void	error1(char *errorcode, t_main *main)
 		i++;
 	}
 	write(1, "\n", 1);
-	free_func(main);
+	if (main)
+		free_func(main);
 	exit(0);
 }
 
@@ -56,7 +57,7 @@ int	draw_map2(t_main *main, int i, int j)
 	else if (main->map->map[i][j] == '\n')
 		;
 	else
-		error1("Error \n hatali harf", main);
+		error1("Error \n wrong character", main);
 	j++;
 	return (j);
 }

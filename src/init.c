@@ -12,20 +12,6 @@
 
 #include "../inc/so_long.h"
 
-t_loop	*get_animation(t_main *main, void *sprite1, void *sprite2)
-{
-	t_loop	*first;
-	t_loop	*second;
-
-	first = (t_loop *)malloc(sizeof(t_loop *) * 5);
-	second = (t_loop *)malloc(sizeof(t_loop *) * 5);
-	first->image = sprite1;
-	second->image = sprite2;
-	first->next = second;
-	second->next = first;
-	return (first);
-}
-
 void	convert(t_main *main)
 {
 	int	x;
@@ -47,8 +33,6 @@ void	convert(t_main *main)
 			main->mlx, "./sprite/coin.xpm", &x, &y);
 	main->sprite->coin2 = mlx_xpm_file_to_image(
 			main->mlx, "./sprite/coin2.xpm", &x, &y);
-	main->sprite->coinloop = get_animation(main, main->sprite->coin1,
-			main->sprite->coin2);
 }
 
 void	convert_lorr(t_main *main, int move)

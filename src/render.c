@@ -12,6 +12,7 @@
 
 #include "../inc/so_long.h"
 
+/*
 void	makeanimation(t_sprite *sprite)
 {
 	static int	i;
@@ -22,6 +23,7 @@ void	makeanimation(t_sprite *sprite)
 		i = 0;
 	}
 }
+*/
 
 void	render_player2(t_main *main, int x, int y, int i)
 {
@@ -42,7 +44,7 @@ void	render_player2(t_main *main, int x, int y, int i)
 		else if (main->map->map[i][j] == 'C')
 			mlx_put_image_to_window(main->mlx, main->win,
 				main->sprite->coin1, j * PIXEL, i * PIXEL);
-		makeanimation(main->sprite);
+		//makeanimation(main->sprite);
 		j++;
 	}
 }

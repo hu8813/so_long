@@ -2,23 +2,30 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: huaydin <huaydin@student.42.fr>            +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
 /*   Created: 2022/12/12 00:03:25 by huaydin           #+#    #+#             */
 /*   Updated: 2022/12/12 00:03:25 by huaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
 #include "../audio/miniaudio.h"
+#include "../inc/so_long.h"
 
 void	free_func(t_main *main)
 {
-	free(main->sprite);
-	free(main->map);
-	free(main->win);
-	free(main->mlx);
+	if (main->sprite)
+		free(main->sprite);
+	if (main->map)
+		free(main->map);
+	if (main->win)
+		free(main->win);
+	if (main->mlx)
+		free(main->mlx);
 }
 
 void	write_move_count(t_main *main)
@@ -26,30 +33,29 @@ void	write_move_count(t_main *main)
 	char	*str;
 	char	*str2;
 
-	mlx_string_put(main->mlx, main->win, PIXEL / 3,
-		PIXEL / 2, 0x00FFFFFF, "MOVE: ");
+	mlx_string_put(main->mlx, main->win, PIXEL / 3, PIXEL / 2, 0x00FFFFFF,
+			"MOVE: ");
 	if (main->mcount == 0)
-		mlx_string_put(main->mlx, main->win, PIXEL,
-			PIXEL / 2, 0x00FFFFFF, "0");
+		mlx_string_put(main->mlx, main->win, PIXEL, PIXEL / 2, 0x00FFFFFF,
+				"0");
 	str = make_number(main->mcount);
-	mlx_string_put(main->mlx, main->win, PIXEL,
-		PIXEL / 2, 0x00FFFFFF, str);
-	mlx_string_put(main->mlx, main->win, (PIXEL * 2) / 1.5,
-		PIXEL / 2, 0x00FFFFFF, "COIN: ");
+	mlx_string_put(main->mlx, main->win, PIXEL, PIXEL / 2, 0x00FFFFFF, str);
+	mlx_string_put(main->mlx, main->win, (PIXEL * 2) / 1.5, PIXEL / 2,
+			0x00FFFFFF, "COIN: ");
 	str2 = make_number(main->ccount);
-	mlx_string_put(main->mlx, main->win, PIXEL * 2,
-		PIXEL / 2, 0x00FFFFFF, str2);
+	mlx_string_put(main->mlx, main->win, PIXEL * 2, PIXEL / 2, 0x00FFFFFF,
+			str2);
 	free(str);
 	free(str2);
 }
 
 int	check_ber(char *str)
 {
-	int	len;
+	int len;
 
 	len = ft_strlen(str) - 1;
-	if (str[len] == 'r' && str[len - 1] == 'e'
-		&& str[len - 2] == 'b' && str[len - 3] == '.')
+	if (str[len] == 'r' && str[len - 1] == 'e' && str[len - 2] == 'b' && str[len
+		- 3] == '.')
 		return (1);
 	else
 		return (0);
@@ -72,7 +78,7 @@ int	main(int argc, char **argv)
 		if (!check_ber(argv[1]))
 		{
 			error1("Error\nBer hatasi", main);
-			return (0);
+			exit (0);
 		}
 		main = main_init(argv[1]);
 		map_check(main);
