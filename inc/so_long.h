@@ -6,7 +6,7 @@
 /*   By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:04:46 by huaydin           #+#    #+#             */
-/*   Updated: 2022/12/12 00:04:47 by huaydin          ###   ########.fr       */
+/*   Updated: 2022/12/12 20:55:13 by huaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void	draw_map(t_main *main);
 char	**map_init(char *path, t_main *main);
 
 //MAIN
-int		check_ber(char *str);
+int		check_ber(char *s);
 void	write_move_count(t_main *main);
 void	free_func(t_main *main);
 

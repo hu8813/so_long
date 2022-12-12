@@ -68,3 +68,29 @@ int	map_check(t_main *main)
 	ft_map_cntrl_ust_alt(main);
 	return (0);
 }
+
+int	line_count(char *buffer)
+{
+	int	i;
+
+	i = 0;
+	while (buffer[i] != '\n' && buffer[i])
+		i++;
+	return (i);
+}
+
+int	n_count(char *buffer)
+{
+	int	i;
+	int	enter;
+
+	enter = 0;
+	i = 0;
+	while (buffer[i])
+	{
+		if (buffer[i] == '\n')
+			enter++;
+		i++;
+	}
+	return (enter + 1);
+}

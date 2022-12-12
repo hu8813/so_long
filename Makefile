@@ -6,15 +6,15 @@
 #    By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 00:02:38 by huaydin           #+#    #+#              #
-#    Updated: 2022/12/12 00:02:39 by huaydin          ###   ########.fr        #
+#    Updated: 2022/12/12 21:07:10 by huaydin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 BNAME = so_long_b
 CC = gcc
-SRC = src/main.c src/init.c src/map.c src/draw.c src/event.c src/render.c src/utils.c src/map_check.c src/utils2.c
-OBJ = main.o init.o map.o draw.o event.o render.o utils.o map_check.o utils2.o
+SRC = src/main.c src/init.c src/map.c src/draw.c src/event.c src/render.c src/utils.c src/map_check.c
+OBJ = main.o init.o map.o draw.o event.o render.o utils.o map_check.o
 MLX_DIR = minilibx
 FLAGS = -lXext -lX11 -lm -lpthread -ldl -fPIE
 MLX = $(addprefix $(MLX_DIR)/,libmlx.a)
