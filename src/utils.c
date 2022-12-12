@@ -17,7 +17,7 @@ void	recursive(int number, int *index, char *str)
 	if (number)
 	{
 		recursive(number / 10, index, str);
-		str[(*index)] = (number % 10) + 48;
+		str[(*index)] = (number % 10) + '0';
 		(*index)++;
 		str[(*index)] = '\0';
 	}
@@ -48,7 +48,7 @@ char	*make_number(int number)
 	str = malloc(sizeof(char) * 50);
 	if (number == 0)
 	{
-		str[0] = number + 48;
+		str[0] = number + '0';
 		return (str);
 	}
 	while (tmp)
