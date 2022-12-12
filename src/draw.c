@@ -21,15 +21,7 @@ void	player_if(t_main *main, int j, int i)
 
 void	error1(char *errorcode, t_main *main)
 {
-	int	i;
-
-	i = 0;
-	while (errorcode[i])
-	{
-		write(1, &errorcode[i], 1);
-		i++;
-	}
-	write(1, "\n", 1);
+	perror(errorcode);
 	if (main)
 		free_func(main);
 	exit(0);

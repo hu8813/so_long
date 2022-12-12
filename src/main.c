@@ -30,8 +30,8 @@ void	free_func(t_main *main)
 
 void	write_move_count(t_main *main)
 {
-	char	*str;
-	char	*str2;
+	char *str;
+	char *str2;
 
 	mlx_string_put(main->mlx, main->win, PIXEL / 3, PIXEL / 2, 0x00FFFFFF,
 			"MOVE: ");
@@ -49,13 +49,12 @@ void	write_move_count(t_main *main)
 	free(str2);
 }
 
-int	check_ber(char *str)
+int	check_ber(char *s)
 {
-	int len;
+	int l;
 
-	len = ft_strlen(str) - 1;
-	if (str[len] == 'r' && str[len - 1] == 'e' && str[len - 2] == 'b' && str[len
-		- 3] == '.')
+	l = ft_strlen(s) - 1;
+	if (s[l - 3] == '.' && s[l - 2] == 'b' && s[l - 1] == 'e' && s[l] == 'r')
 		return (1);
 	else
 		return (0);
@@ -63,32 +62,25 @@ int	check_ber(char *str)
 
 int	main(int argc, char **argv)
 {
-	t_main	*main;
-	ma_engine	audio_engine;
+	t_main *main;
+	ma_engine audio_engine;
 
-	if (argc < 2)
+	if (argc != 2 || !check_ber(argv[1]) || access(argv[1], F_OK | R_OK) == -1)
 	{
-		error1("Error\nMap bulunamadi", main);
+		errno = 2;
+		perror("Usage: ./so_long maps/map.ber\nError with map (.ber) file");
 		exit(0);
 	}
-	else if (argc == 2)
-	{	
-		ma_engine_init(NULL, &audio_engine);
-		ma_engine_play_sound(&audio_engine, "audio/duck.mp3", NULL);
-		if (!check_ber(argv[1]))
-		{
-			error1("Error\nBer hatasi", main);
-			exit (0);
-		}
-		main = main_init(argv[1]);
-		map_check(main);
-		draw_map(main);
-		mlx_hook(main->win, 2, 1L << 0, key_event, main);
-		mlx_loop_hook(main->mlx, render, main);
-		mlx_hook(main->win, 17, 0, ft_key_esc, main);
-		mlx_loop(main->mlx);
-		free_func(main);
-		ma_engine_uninit(&audio_engine);
-	}
+	main = main_init(argv[1]);
+	map_check(main);
+	ma_engine_init(NULL, &audio_engine);
+	ma_engine_play_sound(&audio_engine, "audio/play.mp3", NULL);
+	draw_map(main);
+	mlx_hook(main->win, 2, 1L << 0, key_event, main);
+	mlx_loop_hook(main->mlx, render, main);
+	mlx_hook(main->win, 17, 0, ft_key_esc, main);
+	mlx_loop(main->mlx);
+	free_func(main);
+	ma_engine_uninit(&audio_engine);
 	return (0);
 }
