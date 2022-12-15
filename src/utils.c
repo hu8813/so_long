@@ -12,70 +12,115 @@
 
 #include "../inc/so_long.h"
 
-void	recursive(int number, int *index, char *str)
+static void	ft_free2(void *tmp)
 {
-	if (number)
-	{
-		recursive(number / 10, index, str);
-		str[(*index)] = (number % 10) + '0';
-		(*index)++;
-		str[(*index)] = '\0';
-	}
+	if (tmp)
+		free(tmp);
 }
 
-int	draw_first_line(t_main *main)
+void	ft_free(t_main *main)
+{
+	ft_free2(main->img->coin);
+	ft_free2(main->img->wall);
+	ft_free2(main->img->way);
+	ft_free2(main->img->exit);
+	ft_free2(main->img->ple);
+	ft_free2(main->img->pr);
+	ft_free2(main->img->pu);
+	ft_free2(main->img->pd);
+	ft_free2(main->img);
+	ft_free2(main->map->map);
+	ft_free2(main->map);
+	ft_free2(main->win);
+	ft_free2(main->mlx);
+
+}
+
+static int	ft_sizeofn(long m)
 {
 	int	i;
 
-	i = 0;
-	while (i < main->map->x / 2)
+	i = 1;
+	if (m < 0)
+		i++;
+	while (m > 9 || m < -9)
 	{
-		mlx_put_image_to_window(main->mlx, main->win,
-			main->sprite->duvar, i * PIXEL, 0);
+		if (m < 0)
+			m = -m;
+		m = m / 10;
 		i++;
 	}
-	return (0);
-}
-
-char	*make_number(int number)
-{
-	char	*str;
-	int		tmp;
-	int		len;
-
-	tmp = number;
-	len = 0;
-	str = malloc(sizeof(char) * 50);
-	if (number == 0)
-	{
-		str[0] = number + '0';
-		return (str);
-	}
-	while (tmp)
-	{
-		tmp /= 10;
-		len++;
-	}
-	free(str);
-	str = (char *) malloc(sizeof(char) * (len + 1));
-	len = 0;
-	recursive(number, &len, str);
-	return (str);
-}
-
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
 	return (i);
 }
 
-int	ft_key_esc(t_main *game)
+char	*ft_itoa(int n)
 {
-	mlx_destroy_image(game->mlx, game->win);
-	exit(0);
+	char	*ptr;
+	int		len;
+	long	nlong;
+
+	nlong = (long)n;
+	len = ft_sizeofn(nlong);
+	ptr = ft_calloc(len + 1, sizeof(char));
+	if (!ptr)
+		return (NULL);
+	ptr[len] = '\0';
+	if (n == 0)
+		ptr[0] = '0';
+	if (nlong < 0)
+	{
+		ptr[0] = '-';
+		nlong = -nlong;
+	}
+	while (len-- >= 0 && nlong > 0 && ptr[len] != '-')
+	{
+		ptr[len] = nlong % 10 + '0';
+		nlong = nlong / 10;
+	}
+	return (ptr);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	length;
+
+	length = 0;
+	while (s[length])
+		length++;
+	return (length);
+}
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	while ((*s1 || *s2) && (n > 0))
+	{
+		if (*s1 != *s2)
+			return ((unsigned char)*s1 - (unsigned char)*s2);
+		n--;
+		s1++;
+		s2++;
+	}
 	return (0);
+}
+
+void	*ft_memset(void *s, int c, size_t n)
+{
+	unsigned char	*ptr;
+
+	ptr = (unsigned char *)s;
+	while (n--)
+	{
+		ptr[n] = (unsigned char)c;
+	}
+	return (s);
+}
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	unsigned char	*ptr;
+
+	ptr = (unsigned char *)malloc(nmemb * size);
+	if (ptr)
+		ft_memset(ptr, 0, nmemb * size);
+	return (ptr);
 }

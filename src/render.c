@@ -12,7 +12,7 @@
 
 #include "../inc/so_long.h"
 
-void	render_player2(t_main *main, int x, int y, int i)
+void	render_p2(t_main *main, int x, int y, int i)
 {
 	int	j;
 
@@ -21,45 +21,44 @@ void	render_player2(t_main *main, int x, int y, int i)
 	{
 		if (main->map->map[i][j] == '1')
 			mlx_put_image_to_window(main->mlx, main->win,
-				main->sprite->duvar, j * PIXEL, i * PIXEL);
+				main->img->wall, j * PIXEL, i * PIXEL);
 		else if (main->map->map[i][j] == '0' || main->map->map[i][j] == 'P')
 			mlx_put_image_to_window(main->mlx, main->win,
-				main->sprite->yol, j * PIXEL, i * PIXEL);
+				main->img->way, j * PIXEL, i * PIXEL);
 		else if (main->map->map[i][j] == 'E')
 			mlx_put_image_to_window(main->mlx, main->win,
-				main->sprite->exit, j * PIXEL, i * PIXEL);
+				main->img->exit, j * PIXEL, i * PIXEL);
 		else if (main->map->map[i][j] == 'C')
 			mlx_put_image_to_window(main->mlx, main->win,
-				main->sprite->coin1, j * PIXEL, i * PIXEL);
+				main->img->coin, j * PIXEL, i * PIXEL);
 		j++;
 	}
 }
 
-int	render_player(t_main *main)
+int	render_p(t_main *main)
 {
 	int	x;
 	int	y;
 	int	i;
 
 	i = 0;
-	x = main->player_x - 1;
-	y = main->player_y - 1;
+	x = main->p_x - 1;
+	y = main->p_y - 1;
 	while (i < main->map->y)
 	{
-		render_player2(main, x, y, i);
+		render_p2(main, x, y, i);
 		i++;
 	}
-	draw_first_line(main);
-	mlx_put_image_to_window(main->mlx, main->win, main->sprite->playerl,
+	mlx_put_image_to_window(main->mlx, main->win, main->img->pl,
 		(x + 1) * PIXEL, (y + 1) * PIXEL);
 	return (0);
 }
 
 int	render(t_main *main)
 {
-	render_player(main);
-	if (main->ccount == 0
-		&& main->map->map[main->player_y][main->player_x] == 'E')
+	render_p(main);
+	if (main->coincount == 0
+		&& main->map->map[main->p_y][main->p_x] == 'E')
 		key_event(ESC, main);
 	else
 		write_move_count(main);

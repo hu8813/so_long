@@ -6,36 +6,46 @@
 #    By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 00:02:38 by huaydin           #+#    #+#              #
-#    Updated: 2022/12/12 21:22:48 by huaydin          ###   ########.fr        #
+#    Updated: 2022/12/15 21:13:52 by huaydin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Linux)
+	FLAGS = -lXext -lX11 -lm -lpthread -ldl -fPIE
+	MLX_DIR = minilibx-linux
+	MLX = $(MLX_DIR)/libmlx.a
+endif
+ifeq ($(UNAME_S),Darwin)
+	MLX_DIR = minilibx-mac
+	FLAGS = -framework OpenGL -framework AppKit -L./$(MLX_DIR) -lmlx -glldb
+	MLX = $(MLX_DIR)/libmlx.dylib
+endif
+
 NAME = so_long
-CC = gcc
-SRC = src/main.c src/init.c src/map.c src/draw.c src/event.c src/render.c src/utils.c src/map_check.c
-OBJ = main.o init.o map.o draw.o event.o render.o utils.o map_check.o
-MLX_DIR = minilibx
-FLAGS = -lXext -lX11 -lm -lpthread -ldl -fPIE
-MLX = $(addprefix $(MLX_DIR)/,libmlx.a)
+CC = cc
+SRC = src/main.c src/map.c src/draw.c src/event.c src/render.c src/utils.c
+OBJ = $(SRC:%.c=%.o)
+CFLAGS = -Wall -Wextra -Werror -g3 -O2 -fsanitize=address -I./inc -I./$(MLX_DIR)
 
 .PHONY:		all clean fclean re
 
 all: $(MLX) $(NAME)
 
 $(NAME): $(OBJ) $(MLX)
-	@$(CC) -o $@ $? $(FLAGS)
-	@mv *.o obj
-	@echo done
+	@$(CC)  -o $@ $? $(MLX) $(FLAGS)
+	@echo Done...
+	@echo Usage:   ./so_long maps/map.ber
 
 $(OBJ): $(SRC)
-	@cc -c $? -I./minilibx -fPIE
+	@cc -c $? -I./$(MLX_DIR) -fPIE
+	@mv *.o src
 
 $(MLX):
-		 make -C $(MLX_DIR) 
+		 make -s -C $(MLX_DIR) 
 		 
 clean:
-	@rm -rf obj/*.o
-	@rm -rf *.o
+	@rm -rf src/*.o
 
 fclean: clean
 	@rm -rf $(NAME) 

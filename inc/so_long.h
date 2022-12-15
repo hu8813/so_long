@@ -6,111 +6,115 @@
 /*   By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:04:46 by huaydin           #+#    #+#             */
-/*   Updated: 2022/12/12 21:24:50 by huaydin          ###   ########.fr       */
+/*   Updated: 2022/12/15 23:52:37 by huaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../minilibx/mlx.h"
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <fcntl.h>
+# include <valgrind/memcheck.h> 
+# include <fcntl.h> 	/* open */
+# include <stdio.h> 	/* perror */
+# include <errno.h> 	/* errno */
+# include <stdlib.h> 	/* exit */
+# include <unistd.h> 	/* write, access */
+
+# ifdef __APPLE__
+#  include "../minilibx-mac/mlx.h"
+#  define W_UP 13
+#  define S_DOWN 5
+#  define A_LEFT 0
+#  define D_RIGHT 2
+#  define ESC 53
+# endif
+# ifdef __linux__
+#  include "../minilibx-linux/mlx.h"
+#  define W_UP 119
+#  define S_DOWN 115
+#  define A_LEFT 97
+#  define D_RIGHT 100
+#  define ESC 65307
+# endif
 
 # define PIXEL 64
-# define W_UP 119
-# define A_LEFT 97
-# define S_DOWN 115
-# define D_RIGHT 100
-# define ESC 65307
+
 # define TITLE "so_long"
 
-typedef struct s_loop
+typedef struct s_img
 {
-	void			*image;
-	struct s_loop	*next;
-}	t_loop;
-
-typedef struct s_sprite
-{
-	void	*duvar;
-	void	*yol;
-	void	*coin1;
-	void	*coin2;
-	void	*exit;
-	void	*playerr;
-	void	*playerl;
-	t_loop	*coinloop;
-	int		sprite_h;
-	int		sprite_w;
-}	t_sprite;
+	void			*wall;
+	void			*way;
+	void			*coin;
+	void			*exit;
+	void			*pr;
+	void			*pl;
+	void			*ple;
+	void			*pu;
+	void			*pd;
+	int				img_h;
+	int				img_w;
+}					t_img;
 
 typedef struct s_map
 {
-	char	**map;
-	char	*yedekmap;
-	int		x;
-	int		y;
-}	t_map;
+	char			**map;
+	int				x;
+	int				y;
+}					t_map;
 
 typedef struct s_main
 {
-	int			last;
-	void		*mlx;
-	void		*win;
-	int			player_x;
-	int			player_y;
-	int			ccount;
-	int			cccount;
-	int			mcount;
-	int			pcount;
-	int			ecount;
-	t_map		*map;
-	t_sprite	*sprite;
-}	t_main;
+	int				last;
+	void			*mlx;
+	void			*win;
+	void			*audio;
+	int				p_x;
+	int				p_y;
+	int				coincount;
+	int				ccoincount;
+	int				mcount;
+	int				pcount;
+	int				ecount;
+	t_map			*map;
+	t_img			*img;
+}					t_main;
 
 // INIT
-t_main	*main_init(char *path);
-void	convert(t_main *main);
+void				*ft_memset(void *s, int c, size_t n);
+void				*ft_calloc(size_t nmemb, size_t size);
+t_main				*main_init(char *path);
+void				xpm_to_img(t_main *main);
 
 // UTILS
-char	*make_number(int number);
-int		ft_strlen(char *str);
-int		ft_yedekmap(t_main *main, char *buffer);
-void	recursive(int number, int *index, char *str);
-int		ft_key_esc(t_main *game);
+size_t				ft_strlen(const char *s);
+int					ft_strncmp(const char *s1, const char *s2, size_t n);
+char				*ft_itoa(int n);
+int					ft_key_esc(t_main *game);
 
 //UTILS2.c
-int		n_count(char *buffer);
-int		line_count(char *buffer);
-void	move_enemy(t_main *main);
-void	check_cn(t_main *main);
+void				check_cn(t_main *main);
 
 // EVENT
-int		key_event(int keycode, t_main *main);
-void	convert_lorr(t_main *main, int move);
+int					key_event(int key, t_main *main);
+int					check_esc(t_main *main, int key);
 
-// RENDER // animasyon
-int		draw_first_line(t_main *main);
-int		render(t_main *main);
-int		render_player(t_main *main);
+// RENDER
+int					render(t_main *main);
+int					render_p(t_main *main);
 
 //DRAW
-void	error1(char *errorcode, t_main *main);
-void	draw_map(t_main *main);
+void				ft_error(char *errorcode, t_main *main);
+void				draw_map(t_main *main);
 
 //MAP //Map check
-char	**map_init(char *path, t_main *main);
+char				**map_init(char *path, t_main *main);
 
 //MAIN
-int		check_ber(char *s);
-void	write_move_count(t_main *main);
-void	free_func(t_main *main);
+void				write_move_count(t_main *main);
+void				ft_free(t_main *main);
 
 //MAP_CHECK.c
-int		map_check(t_main *main);
-int		ft_map_cntrl_ust_alt(t_main *game);
+void				map_check(t_main *main);
 
 #endif

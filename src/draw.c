@@ -12,44 +12,50 @@
 
 #include "../inc/so_long.h"
 
-void	player_if(t_main *main, int j, int i)
+void	write_move_count(t_main *main)
 {
-	mlx_put_image_to_window(main->mlx, main->win, main->sprite->playerl, j, i);
-	main->player_y = i;
-	main->player_x = j;
-}
+	char	*str;
+	char	*str2;
+	int		c;
 
-void	error1(char *errorcode, t_main *main)
-{
-	perror(errorcode);
-	if (main)
-		free_func(main);
-	exit(0);
+	c = 0x00FFFFFF;
+	mlx_string_put(main->mlx, main->win, PIXEL * 2, PIXEL / 2, c, "MOVE: ");
+	if (main->mcount == 0)
+		mlx_string_put(main->mlx, main->win, PIXEL * 3, PIXEL / 2, c, "0");
+	str = ft_itoa(main->mcount);
+	mlx_string_put(main->mlx, main->win, PIXEL * 3, PIXEL / 2, c, str);
+	mlx_string_put(main->mlx, main->win, (PIXEL * 4), PIXEL / 2, c, "COIN: ");
+	str2 = ft_itoa(main->coincount);
+	mlx_string_put(main->mlx, main->win, PIXEL * 5, PIXEL / 2, c, str2);
+	free(str);
+	free(str2);
 }
 
 int	draw_map2(t_main *main, int i, int j)
 {
 	if (main->map->map[i][j] == '1')
 		mlx_put_image_to_window(main->mlx, main->win,
-			main->sprite->duvar, j, i);
+			main->img->wall, j, i);
 	else if (main->map->map[i][j] == '0')
 		mlx_put_image_to_window(main->mlx, main->win,
-			main->sprite->yol, j, i);
+			main->img->way, j, i);
 	else if (main->map->map[i][j] == 'P')
-		player_if(main, j, i);
+	{
+		mlx_put_image_to_window(main->mlx, main->win, main->img->pl, j, i);
+		main->p_y = i;
+		main->p_x = j;
+	}
 	else if (main->map->map[i][j] == 'E')
 		mlx_put_image_to_window(main->mlx, main->win,
-			main->sprite->exit, j, i);
+			main->img->exit, j, i);
 	else if (main->map->map[i][j] == 'C')
 	{
 		mlx_put_image_to_window(main->mlx, main->win,
-			main->sprite->coin1, j, i);
-		main->ccount++;
+			main->img->coin, j, i);
+		main->coincount++;
 	}
-	else if (main->map->map[i][j] == '\n')
-		;
-	else
-		error1("Error \n wrong character", main);
+	else if (main->map->map[i][j] != '\n')
+		ft_error("Error \n wrong character", main);
 	j++;
 	return (j);
 }
