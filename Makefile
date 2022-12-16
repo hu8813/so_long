@@ -6,13 +6,13 @@
 #    By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 00:02:38 by huaydin           #+#    #+#              #
-#    Updated: 2022/12/16 11:25:45 by huaydin          ###   ########.fr        #
+#    Updated: 2022/12/16 23:59:20 by huaydin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
-	FLAGS = -lXext -lX11 -lm -lpthread -ldl -fPIE
+	FLAGS = -lXext -lX11 -lm -fPIE
 	MLX_DIR = minilibx-linux
 	MLX = $(MLX_DIR)/libmlx.a
 endif
