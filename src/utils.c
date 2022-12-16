@@ -12,6 +12,16 @@
 
 #include "../inc/so_long.h"
 
+size_t	ft_strlen(const char *s)
+{
+	size_t	length;
+
+	length = 0;
+	while (s[length])
+		length++;
+	return (length);
+}
+
 void	*ft_calloc(size_t count, size_t size)
 {
 	char	*ptr;
@@ -27,6 +37,19 @@ void	*ft_calloc(size_t count, size_t size)
 		i++;
 	}
 	return (ptr);
+}
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	while ((*s1 || *s2) && (n > 0))
+	{
+		if (*s1 != *s2)
+			return ((unsigned char)*s1 - (unsigned char)*s2);
+		n--;
+		s1++;
+		s2++;
+	}
+	return (0);
 }
 
 static int	ft_sizeofn(long m)
@@ -71,27 +94,4 @@ char	*ft_itoa(int n)
 		nlong = nlong / 10;
 	}
 	return (ptr);
-}
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	length;
-
-	length = 0;
-	while (s[length])
-		length++;
-	return (length);
-}
-
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
-{
-	while ((*s1 || *s2) && (n > 0))
-	{
-		if (*s1 != *s2)
-			return ((unsigned char)*s1 - (unsigned char)*s2);
-		n--;
-		s1++;
-		s2++;
-	}
-	return (0);
 }

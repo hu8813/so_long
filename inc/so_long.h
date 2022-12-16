@@ -6,7 +6,7 @@
 /*   By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:04:46 by huaydin           #+#    #+#             */
-/*   Updated: 2022/12/16 17:37:38 by huaydin          ###   ########.fr       */
+/*   Updated: 2022/12/16 21:04:26 by huaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 #  define A_LEFT 0
 #  define D_RIGHT 2
 #  define ESC 53
+#  define CLOSE 17
 # endif
 # ifdef __linux__
 #  include "../minilibx-linux/mlx.h"
@@ -34,6 +35,7 @@
 #  define A_LEFT 97
 #  define D_RIGHT 100
 #  define ESC 65307
+#  define CLOSE 17
 # endif
 
 # define PIXEL 64
@@ -90,6 +92,6 @@ void				*ft_calloc(size_t count, size_t size);
 size_t				ft_strlen(const char *s);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 char				*ft_itoa(int n);
-void				ft_destroy(t_main *main);
+int					ft_destroy(t_main *main);
 
 #endif

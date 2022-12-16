@@ -14,6 +14,7 @@
 
 void	ft_error(char *errorcode, t_main *main)
 {
+	errno = 2;
 	perror(errorcode);
 	check_esc(main, ESC);
 	if (main)
@@ -51,9 +52,9 @@ t_main	*main_init(char *path)
 {
 	t_main	*main;
 
-	main = ft_calloc(1,sizeof(t_main));
-	main->map = ft_calloc(1,sizeof(t_map));
-	main->img = ft_calloc(1,sizeof(t_img));
+	main = ft_calloc(1, sizeof(t_main));
+	main->map = ft_calloc(1, sizeof(t_map));
+	main->img = ft_calloc(1, sizeof(t_img));
 	main->coincount = 0;
 	main->mcount = 0;
 	main->map->map = map_init(path, main);
@@ -96,10 +97,9 @@ int	main(int argc, char **argv)
 	main = main_init(argv[1]);
 	map_check(main);
 	draw_map(main);
-	mlx_hook(main->win, 2, 1L << 0, key_event, main);
+	mlx_hook(main->win, 2, 1, key_event, main);
+	mlx_hook(main->win, CLOSE, 0, ft_destroy, main);
 	mlx_loop_hook(main->mlx, render, main);
-	mlx_hook(main->win, 17, 0, check_esc, main);
 	mlx_loop(main->mlx);
-	ft_destroy(main);
-	exit (0);
+	return (0);
 }

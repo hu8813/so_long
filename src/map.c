@@ -114,13 +114,9 @@ char	**map_init(char *path, t_main *main)
 		if (bytes == -1)
 			ft_destroy(main);
 	}
-	if (buffer[i] == '\n')
-		buffer[i] = '\0';
-	else
-		buffer[i] = '\0';
+	buffer[i] = '\0';
 	map = map_split(buffer, main);
 	free(buffer);
 	close(fd);
 	return (map);
 }
-

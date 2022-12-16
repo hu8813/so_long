@@ -14,6 +14,7 @@
 
 int	check_esc(t_main *main, int key)
 {
+	printf("%d", key);
 	if (key == ESC)
 		ft_destroy(main);
 	if (main->map->map[main->p_y][main->p_x] == 'C')
@@ -53,7 +54,7 @@ int	key_event(int key, t_main *main)
 	return (check_esc(main, key));
 }
 
-void	ft_destroy(t_main *main)
+int	ft_destroy(t_main *main)
 {
 	int	y;
 
@@ -76,4 +77,5 @@ void	ft_destroy(t_main *main)
 	free(main->mlx);
 	free(main);
 	exit(0);
+	return (0);
 }
