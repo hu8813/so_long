@@ -12,7 +12,7 @@
 
 #include "../inc/so_long.h"
 
-void	render_p2(t_main *main, int x, int y, int i)
+static void	render2(t_main *main, int x, int y, int i)
 {
 	int	j;
 
@@ -35,7 +35,7 @@ void	render_p2(t_main *main, int x, int y, int i)
 	}
 }
 
-int	render_p(t_main *main)
+int	render(t_main *main)
 {
 	int	x;
 	int	y;
@@ -46,20 +46,14 @@ int	render_p(t_main *main)
 	y = main->p_y - 1;
 	while (i < main->map->y)
 	{
-		render_p2(main, x, y, i);
+		render2(main, x, y, i);
 		i++;
 	}
 	mlx_put_image_to_window(main->mlx, main->win, main->img->pl,
 		(x + 1) * PIXEL, (y + 1) * PIXEL);
-	return (0);
-}
-
-int	render(t_main *main)
-{
-	render_p(main);
 	if (main->coincount == 0
 		&& main->map->map[main->p_y][main->p_x] == 'E')
-		key_event(ESC, main);
+		ft_destroy(main);
 	else
 		write_move_count(main);
 	return (0);

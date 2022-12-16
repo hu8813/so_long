@@ -40,7 +40,7 @@ void	map_check(t_main *main)
 	}
 }
 
-char	**map_split2(t_main *main, int height, int width, char *buffer)
+static char	**map_split2(t_main *main, int height, int width, char *buffer)
 {
 	char	**map;
 	int		y;
@@ -68,7 +68,7 @@ char	**map_split2(t_main *main, int height, int width, char *buffer)
 	return (map);
 }
 
-char	**map_split(char *buffer, t_main *main)
+static char	**map_split(char *buffer, t_main *main)
 {
 	char	**map;
 	int		height;

@@ -6,7 +6,7 @@
 /*   By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:04:46 by huaydin           #+#    #+#             */
-/*   Updated: 2022/12/16 21:04:26 by huaydin          ###   ########.fr       */
+/*   Updated: 2022/12/16 21:17:19 by huaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,7 @@ void				map_check(t_main *main);
 void				draw_map(t_main *main);
 void				xpm_to_img(t_main *main);
 int					key_event(int key, t_main *main);
-int					check_esc(t_main *main, int key);
 int					render(t_main *main);
-int					render_p(t_main *main);
 void				write_move_count(t_main *main);
 void				ft_free(t_main *main);
 void				ft_error(char *errorcode, t_main *main);

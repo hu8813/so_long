@@ -16,22 +16,25 @@ void	write_move_count(t_main *main)
 {
 	char	*str;
 	char	*str2;
+	char	*desc;
 	int		c;
 
 	c = 0x00FFFFFF;
-	mlx_string_put(main->mlx, main->win, PIXEL * 2, PIXEL / 2, c, "MOVE: ");
+	mlx_string_put(main->mlx, main->win, PIXEL * 2, PIXEL / 2, c, "M O V E :");
 	if (main->mcount == 0)
 		mlx_string_put(main->mlx, main->win, PIXEL * 3, PIXEL / 2, c, "0");
 	str = ft_itoa(main->mcount);
 	mlx_string_put(main->mlx, main->win, PIXEL * 3, PIXEL / 2, c, str);
-	mlx_string_put(main->mlx, main->win, (PIXEL * 4), PIXEL / 2, c, "COIN: ");
+	mlx_string_put(main->mlx, main->win, (PIXEL * 4), PIXEL / 2, c, "C O I N:");
 	str2 = ft_itoa(main->coincount);
 	mlx_string_put(main->mlx, main->win, PIXEL * 5, PIXEL / 2, c, str2);
+	desc = "P R E S S   E S C   O R   C L I C K   ( X )   T O   E X I T";
+	mlx_string_put(main->mlx, main->win, PIXEL * 8, PIXEL / 2, c, desc);
 	free(str);
 	free(str2);
 }
 
-int	draw_map2(t_main *main, int i, int j)
+static int	draw_map2(t_main *main, int i, int j)
 {
 	if (main->map->map[i][j] == '1')
 		mlx_put_image_to_window(main->mlx, main->win,

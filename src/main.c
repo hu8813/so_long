@@ -16,7 +16,6 @@ void	ft_error(char *errorcode, t_main *main)
 {
 	errno = 2;
 	perror(errorcode);
-	check_esc(main, ESC);
 	if (main)
 		ft_destroy(main);
 	exit(0);
