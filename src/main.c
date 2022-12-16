@@ -89,9 +89,12 @@ t_main	*main_init(char *path)
 {
 	t_main	*main;
 
-	main = ft_calloc(1, sizeof(t_main));
-	main->map = ft_calloc(1, sizeof(t_map));
-	main->img = ft_calloc(1, sizeof(t_img));
+	main = malloc(sizeof(t_main));
+	main->map = malloc(sizeof(t_map));
+	main->img = malloc(sizeof(t_img));
+	printf("img %p\n", main->img);
+	printf("map %p\n", main->map);
+	printf("main %p\n", main);
 	main->last = 1;
 	main->coincount = 0;
 	main->mcount = 0;

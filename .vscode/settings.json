@@ -2,6 +2,8 @@
     "files.associations": {
         "mlx.h": "c",
         "so_long.h": "c",
-        "miniaudio.h": "c"
+        "miniaudio.h": "c",
+        "memcheck.h": "c",
+        "unistd.h": "c"
     }
 }

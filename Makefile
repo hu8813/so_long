@@ -6,7 +6,7 @@
 #    By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 00:02:38 by huaydin           #+#    #+#              #
-#    Updated: 2022/12/15 21:13:52 by huaydin          ###   ########.fr        #
+#    Updated: 2022/12/16 11:25:45 by huaydin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,19 +26,19 @@ NAME = so_long
 CC = cc
 SRC = src/main.c src/map.c src/draw.c src/event.c src/render.c src/utils.c
 OBJ = $(SRC:%.c=%.o)
-CFLAGS = -Wall -Wextra -Werror -g3 -O2 -fsanitize=address -I./inc -I./$(MLX_DIR)
+CFLAGS = -Wall -Wextra -Werror -g3 -O2 -I./inc -I./$(MLX_DIR)
 
 .PHONY:		all clean fclean re
 
 all: $(MLX) $(NAME)
 
 $(NAME): $(OBJ) $(MLX)
-	@$(CC)  -o $@ $? $(MLX) $(FLAGS)
+	@$(CC) -o $@ $? $(MLX) $(FLAGS) $(CFLAGS)
 	@echo Done...
 	@echo Usage:   ./so_long maps/map.ber
 
 $(OBJ): $(SRC)
-	@cc -c $? -I./$(MLX_DIR) -fPIE
+	@$(CC) -c $? -I./$(MLX_DIR) -fPIE
 	@mv *.o src
 
 $(MLX):

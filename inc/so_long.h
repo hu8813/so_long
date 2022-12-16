@@ -6,14 +6,13 @@
 /*   By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:04:46 by huaydin           #+#    #+#             */
-/*   Updated: 2022/12/15 23:52:37 by huaydin          ###   ########.fr       */
+/*   Updated: 2022/12/16 11:17:09 by huaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include <valgrind/memcheck.h> 
 # include <fcntl.h> 	/* open */
 # include <stdio.h> 	/* perror */
 # include <errno.h> 	/* errno */
