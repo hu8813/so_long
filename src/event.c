@@ -12,6 +12,18 @@
 
 #include "../inc/so_long.h"
 
+int	check_esc(t_main *main, int key)
+{
+	if (key == ESC)
+		ft_destroy(main);
+	if (main->map->map[main->p_y][main->p_x] == 'C')
+	{
+		main->map->map[main->p_y][main->p_x] = '0';
+		main->coincount--;
+	}
+	return (0);
+}
+
 int	key_event(int key, t_main *main)
 {
 	if (key == W_UP && main->map->map[main->p_y - 1][main->p_x] != '1')
@@ -39,4 +51,29 @@ int	key_event(int key, t_main *main)
 		printf("move %d\n", ++(main->mcount));
 	}
 	return (check_esc(main, key));
+}
+
+void	ft_destroy(t_main *main)
+{
+	int	y;
+
+	mlx_destroy_image(main->mlx, main->img->ple);
+	mlx_destroy_image(main->mlx, main->img->pr);
+	mlx_destroy_image(main->mlx, main->img->pu);
+	mlx_destroy_image(main->mlx, main->img->pd);
+	mlx_destroy_image(main->mlx, main->img->wall);
+	mlx_destroy_image(main->mlx, main->img->way);
+	mlx_destroy_image(main->mlx, main->img->exit);
+	mlx_destroy_image(main->mlx, main->img->coin);
+	mlx_destroy_window(main->mlx, main->win);
+	mlx_destroy_display(main->mlx);
+	y = 0;
+	while (y < main->map->y)
+		free(main->map->map[y++]);
+	free(main->map->map);
+	free(main->img);
+	free(main->map);
+	free(main->mlx);
+	free(main);
+	exit(0);
 }

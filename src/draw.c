@@ -52,7 +52,6 @@ int	draw_map2(t_main *main, int i, int j)
 	{
 		mlx_put_image_to_window(main->mlx, main->win,
 			main->img->coin, j, i);
-		main->coincount++;
 	}
 	else if (main->map->map[i][j] != '\n')
 		ft_error("Error \n wrong character", main);

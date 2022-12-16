@@ -18,7 +18,7 @@ void	map_check(t_main *main)
 
 	if (main->ecount <= 0)
 		ft_error("Error\nExit not found", main);
-	else if (main->ccoincount <= 0)
+	else if (main->coincount <= 0)
 		ft_error("Error\nCoin not found", main);
 	else if (main->pcount <= 0 || main->pcount > 1)
 		ft_error("Error\nPlayer not found or more than one", main);
@@ -47,11 +47,11 @@ char	**map_split2(t_main *main, int height, int width, char *buffer)
 	int		x;
 
 	y = 0;
-	map = ft_calloc(height + 1, sizeof(char *));
+	map = ft_calloc((height + 1), sizeof(char *));
 	while (y < height)
 	{
 		x = 0;
-		map[y] = ft_calloc(width + 1, sizeof(char));
+		map[y] = ft_calloc((width + 1), sizeof(char));
 		while (x < width)
 		{
 			if (buffer[(y * (width + 1) + x)] == 'E')
@@ -59,7 +59,7 @@ char	**map_split2(t_main *main, int height, int width, char *buffer)
 			else if (buffer[y * (width + 1) + x] == 'P')
 				main->pcount++;
 			else if (buffer[(y * (width + 1) + x)] == 'C')
-				main->ccoincount++;
+				main->coincount++;
 			map[y][x] = buffer[(y * (width + 1) + x)];
 			x++;
 		}
@@ -77,7 +77,7 @@ char	**map_split(char *buffer, t_main *main)
 
 	main->ecount = 0;
 	main->pcount = 0;
-	main->ccoincount = 0;
+	main->coincount = 0;
 	height = 0;
 	i = 0;
 	while (buffer[i] != 0)
@@ -103,16 +103,16 @@ char	**map_init(char *path, t_main *main)
 	int		bytes;
 	int		fd;
 
-	buffer = ft_calloc(100000, sizeof(char));
+	buffer = ft_calloc(10000, sizeof(char));
 	fd = open(path, O_RDONLY);
 	i = 0;
 	bytes = 1;
+	buffer[0] = '\0';
 	while (bytes)
 	{
-		bytes = read(fd, &buffer[i], 1);
+		bytes = read(fd, &buffer[i++], 1);
 		if (bytes == -1)
-			exit(1);
-		i++;
+			ft_destroy(main);
 	}
 	if (buffer[i] == '\n')
 		buffer[i] = '\0';

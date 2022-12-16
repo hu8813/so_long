@@ -6,7 +6,7 @@
 /*   By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:04:46 by huaydin           #+#    #+#             */
-/*   Updated: 2022/12/16 11:17:09 by huaydin          ###   ########.fr       */
+/*   Updated: 2022/12/16 17:37:38 by huaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@
 
 # define PIXEL 64
 
-# define TITLE "so_long"
-
 typedef struct s_img
 {
 	void			*wall;
@@ -64,14 +62,11 @@ typedef struct s_map
 
 typedef struct s_main
 {
-	int				last;
 	void			*mlx;
 	void			*win;
-	void			*audio;
 	int				p_x;
 	int				p_y;
 	int				coincount;
-	int				ccoincount;
 	int				mcount;
 	int				pcount;
 	int				ecount;
@@ -79,41 +74,22 @@ typedef struct s_main
 	t_img			*img;
 }					t_main;
 
-// INIT
-void				*ft_memset(void *s, int c, size_t n);
-void				*ft_calloc(size_t nmemb, size_t size);
 t_main				*main_init(char *path);
+char				**map_init(char *path, t_main *main);
+void				map_check(t_main *main);
+void				draw_map(t_main *main);
 void				xpm_to_img(t_main *main);
-
-// UTILS
+int					key_event(int key, t_main *main);
+int					check_esc(t_main *main, int key);
+int					render(t_main *main);
+int					render_p(t_main *main);
+void				write_move_count(t_main *main);
+void				ft_free(t_main *main);
+void				ft_error(char *errorcode, t_main *main);
+void				*ft_calloc(size_t count, size_t size);
 size_t				ft_strlen(const char *s);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 char				*ft_itoa(int n);
-int					ft_key_esc(t_main *game);
-
-//UTILS2.c
-void				check_cn(t_main *main);
-
-// EVENT
-int					key_event(int key, t_main *main);
-int					check_esc(t_main *main, int key);
-
-// RENDER
-int					render(t_main *main);
-int					render_p(t_main *main);
-
-//DRAW
-void				ft_error(char *errorcode, t_main *main);
-void				draw_map(t_main *main);
-
-//MAP //Map check
-char				**map_init(char *path, t_main *main);
-
-//MAIN
-void				write_move_count(t_main *main);
-void				ft_free(t_main *main);
-
-//MAP_CHECK.c
-void				map_check(t_main *main);
+void				ft_destroy(t_main *main);
 
 #endif

@@ -12,28 +12,21 @@
 
 #include "../inc/so_long.h"
 
-static void	ft_free2(void *tmp)
+void	*ft_calloc(size_t count, size_t size)
 {
-	if (tmp)
-		free(tmp);
-}
+	char	*ptr;
+	size_t	i;
 
-void	ft_free(t_main *main)
-{
-	ft_free2(main->img->coin);
-	ft_free2(main->img->wall);
-	ft_free2(main->img->way);
-	ft_free2(main->img->exit);
-	ft_free2(main->img->ple);
-	ft_free2(main->img->pr);
-	ft_free2(main->img->pu);
-	ft_free2(main->img->pd);
-	ft_free2(main->img);
-	ft_free2(main->map->map);
-	ft_free2(main->map);
-	ft_free2(main->win);
-	ft_free2(main->mlx);
-
+	i = 0;
+	ptr = malloc(count * size);
+	if (!ptr)
+		return (NULL);
+	while (i < count * size)
+	{
+		ptr[i] = 0;
+		i++;
+	}
+	return (ptr);
 }
 
 static int	ft_sizeofn(long m)
@@ -61,7 +54,7 @@ char	*ft_itoa(int n)
 
 	nlong = (long)n;
 	len = ft_sizeofn(nlong);
-	ptr = ft_calloc(len + 1, sizeof(char));
+	ptr = calloc((len + 1), sizeof(char));
 	if (!ptr)
 		return (NULL);
 	ptr[len] = '\0';
@@ -101,26 +94,4 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		s2++;
 	}
 	return (0);
-}
-
-void	*ft_memset(void *s, int c, size_t n)
-{
-	unsigned char	*ptr;
-
-	ptr = (unsigned char *)s;
-	while (n--)
-	{
-		ptr[n] = (unsigned char)c;
-	}
-	return (s);
-}
-
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	unsigned char	*ptr;
-
-	ptr = (unsigned char *)malloc(nmemb * size);
-	if (ptr)
-		ft_memset(ptr, 0, nmemb * size);
-	return (ptr);
 }
