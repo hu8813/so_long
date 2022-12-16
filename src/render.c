@@ -16,7 +16,7 @@ static void	render2(t_main *main, int x, int y, int i)
 {
 	int	j;
 
-	j = 0;
+	j = 1;
 	while (j < main->map->x)
 	{
 		if (main->map->map[i][j] == '1')
@@ -42,15 +42,15 @@ int	render(t_main *main)
 	int	i;
 
 	i = 0;
-	x = main->p_x - 1;
-	y = main->p_y - 1;
+	x = main->p_x ;
+	y = main->p_y ;
 	while (i < main->map->y)
 	{
 		render2(main, x, y, i);
 		i++;
 	}
 	mlx_put_image_to_window(main->mlx, main->win, main->img->pl,
-		(x + 1) * PIXEL, (y + 1) * PIXEL);
+		(x) * PIXEL, (y) * PIXEL);
 	if (main->coincount == 0
 		&& main->map->map[main->p_y][main->p_x] == 'E')
 		ft_destroy(main);

@@ -72,9 +72,7 @@ void	draw_map(t_main *main)
 	while (i < (main->map->y))
 	{
 		while (j < (main->map->x))
-		{
 			j = draw_map2(main, i, j);
-		}
 		i++;
 		j = 0;
 	}
