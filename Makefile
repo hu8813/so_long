@@ -6,7 +6,7 @@
 #    By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 00:02:38 by huaydin           #+#    #+#              #
-#    Updated: 2022/12/17 23:11:36 by huaydin          ###   ########.fr        #
+#    Updated: 2022/12/17 23:43:31 by huaydin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ $(NAME): $(OBJ) $(MLX)
 	@$(CC) -o $@ $? $(MLX) $(FLAGS) $(CFLAGS)
 	@echo Done...
 	@echo Usage:   ./so_long maps/map.ber
+	@echo or just: make test
 
 $(OBJ): $(SRC)
 	@$(CC) -c $? -I./$(MLX_DIR) -fPIE
