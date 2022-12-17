@@ -6,7 +6,7 @@
 /*   By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:04:46 by huaydin           #+#    #+#             */
-/*   Updated: 2022/12/16 21:17:19 by huaydin          ###   ########.fr       */
+/*   Updated: 2022/12/17 22:40:50 by huaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct s_img
 	void			*wall;
 	void			*way;
 	void			*coin;
-	void			*exit;
+	void			*exitd;
 	void			*pr;
 	void			*pl;
 	void			*ple;

@@ -50,7 +50,7 @@ static int	draw_map2(t_main *main, int i, int j)
 	}
 	else if (main->map->map[i][j] == 'E')
 		mlx_put_image_to_window(main->mlx, main->win,
-			main->img->exit, j, i);
+			main->img->exitd, j, i);
 	else if (main->map->map[i][j] == 'C')
 	{
 		mlx_put_image_to_window(main->mlx, main->win,

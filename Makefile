@@ -6,7 +6,7 @@
 #    By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 00:02:38 by huaydin           #+#    #+#              #
-#    Updated: 2022/12/16 23:59:20 by huaydin          ###   ########.fr        #
+#    Updated: 2022/12/17 22:39:50 by huaydin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ endif
 
 NAME = so_long
 CC = cc
-SRC = src/main.c src/map.c src/draw.c src/event.c src/render.c src/utils.c
+SRC = src/main.c src/map.c src/draw.c src/event.c src/render.c src/libft_utils.c
 OBJ = $(SRC:%.c=%.o)
 CFLAGS = -Wall -Wextra -Werror -g3 -O2 -I./inc -I./$(MLX_DIR)
 

@@ -73,7 +73,7 @@ int	ft_destroy(t_main *main)
 	mlx_destroy_image(main->mlx, main->img->pd);
 	mlx_destroy_image(main->mlx, main->img->wall);
 	mlx_destroy_image(main->mlx, main->img->way);
-	mlx_destroy_image(main->mlx, main->img->exit);
+	mlx_destroy_image(main->mlx, main->img->exitd);
 	mlx_destroy_image(main->mlx, main->img->coin);
 	mlx_destroy_window(main->mlx, main->win);
 	mlx_destroy_display(main->mlx);

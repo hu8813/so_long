@@ -27,7 +27,7 @@ static void	render2(t_main *main, int x, int y, int i)
 				main->img->way, j * PIXEL, i * PIXEL);
 		else if (main->map->map[i][j] == 'E')
 			mlx_put_image_to_window(main->mlx, main->win,
-				main->img->exit, j * PIXEL, i * PIXEL);
+				main->img->exitd, j * PIXEL, i * PIXEL);
 		else if (main->map->map[i][j] == 'C')
 			mlx_put_image_to_window(main->mlx, main->win,
 				main->img->coin, j * PIXEL, i * PIXEL);
