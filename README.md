@@ -6,12 +6,12 @@ Welcome to so_long, a 2D game written in C!
 ## Requirements
 
 -   A C compiler (such as GCC)
--   in Linux, Libraries: -lXext -lX11 -lm 
+-   in Linux, Libraries: libXext, libX11 ,
     to install these dependencies, run:
     
 `sudo apt-get update && sudo apt-get install xorg libxext-dev zlib1g-dev libbsd-dev`
 
--   in mac, -framework OpenGL -framework AppKit
+-   in mac, compiling flags are: -framework OpenGL -framework AppKit
 
 ## Installation
 
