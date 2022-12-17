@@ -16,7 +16,7 @@ static void	render2(t_main *main, int x, int y, int i)
 {
 	int	j;
 
-	j = 1;
+	j = 0;
 	while (j < main->map->x)
 	{
 		if (main->map->map[i][j] == '1')
