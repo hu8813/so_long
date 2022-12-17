@@ -6,7 +6,7 @@
 #    By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 00:02:38 by huaydin           #+#    #+#              #
-#    Updated: 2022/12/17 22:39:50 by huaydin          ###   ########.fr        #
+#    Updated: 2022/12/17 23:10:51 by huaydin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,3 +51,6 @@ fclean: clean
 	@rm -rf $(NAME) 
 
 re: fclean all
+
+test: all
+	./so_long maps/map.ber

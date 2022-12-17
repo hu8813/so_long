@@ -94,6 +94,8 @@ int	main(int argc, char **argv)
 	}
 	check_files();
 	main = main_init(argv[1]);
+	if (main == NULL)
+		ft_error("Error with mlx or map (.ber) file", main);
 	map_check(main);
 	draw_map(main);
 	mlx_hook(main->win, 2, 1, key_event, main);
