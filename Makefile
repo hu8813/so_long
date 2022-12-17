@@ -6,7 +6,7 @@
 #    By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 00:02:38 by huaydin           #+#    #+#              #
-#    Updated: 2022/12/17 23:10:51 by huaydin          ###   ########.fr        #
+#    Updated: 2022/12/17 23:11:36 by huaydin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ $(OBJ): $(SRC)
 	@mv *.o src
 
 $(MLX):
-		 make -s -C $(MLX_DIR) 
+	make -s -C $(MLX_DIR) 
 		 
 clean:
 	@rm -rf src/*.o
