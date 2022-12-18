@@ -64,16 +64,16 @@ static int	draw_map2(t_main *main, int y, int x)
 
 void	draw_map(t_main *main)
 {
-	int	i;
-	int	j;
+	int	y;
+	int	x;
 
-	i = 0;
-	j = 0;
-	while (i < (main->map->y))
+	y = 0;
+	x = 0;
+	while (y < (main->map->y))
 	{
-		while (j < (main->map->x))
-			j = draw_map2(main, i, j);
-		i++;
-		j = 0;
+		while (x < (main->map->x))
+			x = draw_map2(main, y, x);
+		y++;
+		x = 0;
 	}
 }
