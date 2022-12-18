@@ -16,11 +16,11 @@ void	map_check(t_main *main)
 {
 	int	i;
 
-	if (main->exitcount <= 0)
+	if (main->exitcount < 1)
 		ft_error("Error\nExit not found", main);
-	else if (main->coincount <= 0)
+	else if (main->coincount < 1)
 		ft_error("Error\nCoin not found", main);
-	else if (main->playercount <= 0 || main->playercount > 1)
+	else if (main->playercount < 1 || main->playercount > 1)
 		ft_error("Error\nPlayer not found or more than one", main);
 	i = -1;
 	while (++i < main->map->y - 1)
