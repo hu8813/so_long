@@ -23,28 +23,31 @@ void	ft_error(char *errorcode, t_main *main)
 
 void	xpm_to_img(t_main *main)
 {
-	int	x;
-	int	y;
+	int	tmp;
 
-	x = PIXEL;
-	y = PIXEL;
 	main->img->pr = mlx_xpm_file_to_image(
-			main->mlx, "./img/right.xpm", &x, &y);
+			main->mlx, "./img/right.xpm", &tmp, &tmp);
 	main->img->pl = main->img->pr;
 	main->img->ple = mlx_xpm_file_to_image(
-			main->mlx, "./img/left.xpm", &x, &y);
+			main->mlx, "./img/left.xpm", &tmp, &tmp);
 	main->img->pu = mlx_xpm_file_to_image(
-			main->mlx, "./img/up.xpm", &x, &y);
+			main->mlx, "./img/up.xpm", &tmp, &tmp);
 	main->img->pd = mlx_xpm_file_to_image(
-			main->mlx, "./img/down.xpm", &x, &y);
+			main->mlx, "./img/down.xpm", &tmp, &tmp);
 	main->img->way = mlx_xpm_file_to_image(
-			main->mlx, "./img/way.xpm", &x, &y);
+			main->mlx, "./img/way.xpm", &tmp, &tmp);
 	main->img->wall = mlx_xpm_file_to_image(
-			main->mlx, "./img/wall.xpm", &x, &y);
+			main->mlx, "./img/wall.xpm", &tmp, &tmp);
 	main->img->exitd = mlx_xpm_file_to_image(
-			main->mlx, "./img/exit.xpm", &x, &y);
+			main->mlx, "./img/exit.xpm", &tmp, &tmp);
 	main->img->coin = mlx_xpm_file_to_image(
-			main->mlx, "./img/coin.xpm", &x, &y);
+			main->mlx, "./img/coin.xpm", &tmp, &tmp);
+	if (main->img->pr == NULL || main->img->pl == NULL
+		|| main->img->ple == NULL || main->img->pu == NULL
+		|| main->img->pd == NULL || main->img->way == NULL
+		|| main->img->wall == NULL || main->img->exitd == NULL
+		|| main->img->coin == NULL)
+		ft_error("Error with image initialisation", main);
 }
 
 t_main	*main_init(char *path)
