@@ -58,6 +58,8 @@ t_main	*main_init(char *path)
 	main->movecount = 0;
 	main->map->map = map_init(path, main);
 	main->mlx = mlx_init();
+	if (main->mlx  == NULL)
+		ft_error("Error with mlx initialisation", main);
 	xpm_to_img(main);
 	main->win = mlx_new_window(main->mlx,
 			main->map->x * PIXEL, main->map->y * PIXEL, "so_long");
@@ -94,8 +96,6 @@ int	main(int argc, char **argv)
 	}
 	check_files();
 	main = main_init(argv[1]);
-	if (main == NULL)
-		ft_error("Error with mlx or map (.ber) file", main);
 	map_check(main);
 	draw_map(main);
 	mlx_hook(main->win, 2, 1, key_event, main);
