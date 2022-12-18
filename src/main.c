@@ -26,8 +26,8 @@ void	xpm_to_img(t_main *main)
 	int	x;
 	int	y;
 
-	x = main->img->img_h;
-	y = main->img->img_w;
+	x = PIXEL;
+	y = PIXEL;
 	main->img->pr = mlx_xpm_file_to_image(
 			main->mlx, "./img/right.xpm", &x, &y);
 	main->img->pl = main->img->pr;

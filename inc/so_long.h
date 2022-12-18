@@ -6,7 +6,7 @@
 /*   By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:04:46 by huaydin           #+#    #+#             */
-/*   Updated: 2022/12/18 11:58:41 by huaydin          ###   ########.fr       */
+/*   Updated: 2022/12/18 22:07:25 by huaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ typedef struct s_img
 	void			*ple;
 	void			*pu;
 	void			*pd;
-	int				img_h;
-	int				img_w;
 }					t_img;
 
 typedef struct s_map
