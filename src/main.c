@@ -18,7 +18,7 @@ void	ft_error(char *errorcode, t_main *main)
 	perror(errorcode);
 	if (main)
 		ft_destroy(main);
-	exit(0);
+	exit(1);
 }
 
 void	xpm_to_img(t_main *main)
@@ -55,7 +55,7 @@ t_main	*main_init(char *path)
 	main->map = ft_calloc(1, sizeof(t_map));
 	main->img = ft_calloc(1, sizeof(t_img));
 	main->coincount = 0;
-	main->mcount = 0;
+	main->movecount = 0;
 	main->map->map = map_init(path, main);
 	main->mlx = mlx_init();
 	xpm_to_img(main);
@@ -77,7 +77,7 @@ void	check_files(void)
 	{
 		errno = 2;
 		perror("Error with image file");
-		exit(0);
+		exit(1);
 	}
 }
 
@@ -90,7 +90,7 @@ int	main(int argc, char **argv)
 	{
 		errno = 2;
 		perror("Usage: ./so_long maps/map.ber\nError with map (.ber) file");
-		exit(0);
+		exit(1);
 	}
 	check_files();
 	main = main_init(argv[1]);

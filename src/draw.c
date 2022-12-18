@@ -21,9 +21,9 @@ void	write_move_count(t_main *main)
 
 	c = 0x00FFFFFF;
 	mlx_string_put(main->mlx, main->win, PIXEL * 2, PIXEL / 2, c, "M O V E :");
-	if (main->mcount == 0)
+	if (main->movecount == 0)
 		mlx_string_put(main->mlx, main->win, PIXEL * 3, PIXEL / 2, c, "0");
-	str = ft_itoa(main->mcount);
+	str = ft_itoa(main->movecount);
 	mlx_string_put(main->mlx, main->win, PIXEL * 3, PIXEL / 2, c, str);
 	mlx_string_put(main->mlx, main->win, (PIXEL * 4), PIXEL / 2, c, "C O I N:");
 	str2 = ft_itoa(main->coincount);

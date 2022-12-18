@@ -6,7 +6,7 @@
 /*   By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:04:46 by huaydin           #+#    #+#             */
-/*   Updated: 2022/12/17 22:40:50 by huaydin          ###   ########.fr       */
+/*   Updated: 2022/12/18 11:58:41 by huaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ typedef struct s_main
 	int				p_x;
 	int				p_y;
 	int				coincount;
-	int				mcount;
-	int				pcount;
-	int				ecount;
+	int				movecount;
+	int				playercount;
+	int				exitcount;
 	t_map			*map;
 	t_img			*img;
 }					t_main;

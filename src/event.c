@@ -25,7 +25,7 @@ static int	check_esc(t_main *main, int key)
 	}
 	if (key == W_UP || key == A_LEFT || key == S_DOWN || key == D_RIGHT)
 	{
-		move = ft_itoa(main->mcount);
+		move = ft_itoa(main->movecount);
 		write(1, "Move count: ", 12);
 		write(1, move, ft_strlen(move));
 		write(1, "\n", 1);
@@ -40,25 +40,25 @@ int	key_event(int key, t_main *main)
 	{
 		main->p_y--;
 		main->img->pl = main->img->pu;
-		++(main->mcount);
+		++(main->movecount);
 	}
 	else if (key == A_LEFT && main->map->map[main->p_y][main->p_x - 1] != '1')
 	{
 		main->img->pl = main->img->ple;
 		main->p_x--;
-		++(main->mcount);
+		++(main->movecount);
 	}
 	else if (key == S_DOWN && main->map->map[main->p_y + 1][main->p_x] != '1')
 	{
 		main->img->pl = main->img->pd;
 		main->p_y++;
-		++(main->mcount);
+		++(main->movecount);
 	}
 	else if (key == D_RIGHT && main->map->map[main->p_y][main->p_x + 1] != '1')
 	{
 		main->img->pl = main->img->pr;
 		main->p_x++;
-		++(main->mcount);
+		++(main->movecount);
 	}
 	return (check_esc(main, key));
 }

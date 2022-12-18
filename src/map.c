@@ -16,11 +16,11 @@ void	map_check(t_main *main)
 {
 	int	i;
 
-	if (main->ecount <= 0)
+	if (main->exitcount <= 0)
 		ft_error("Error\nExit not found", main);
 	else if (main->coincount <= 0)
 		ft_error("Error\nCoin not found", main);
-	else if (main->pcount <= 0 || main->pcount > 1)
+	else if (main->playercount <= 0 || main->playercount > 1)
 		ft_error("Error\nPlayer not found or more than one", main);
 	i = -1;
 	while (++i < main->map->y - 1)
@@ -55,9 +55,9 @@ static char	**map_split2(t_main *main, int height, int width, char *buffer)
 		while (x < width)
 		{
 			if (buffer[(y * (width + 1) + x)] == 'E')
-				main->ecount++;
+				main->exitcount++;
 			else if (buffer[y * (width + 1) + x] == 'P')
-				main->pcount++;
+				main->playercount++;
 			else if (buffer[(y * (width + 1) + x)] == 'C')
 				main->coincount++;
 			map[y][x] = buffer[(y * (width + 1) + x)];
@@ -75,8 +75,8 @@ static char	**map_split(char *buffer, t_main *main)
 	int		width;
 	int		i;
 
-	main->ecount = 0;
-	main->pcount = 0;
+	main->exitcount = 0;
+	main->playercount = 0;
 	main->coincount = 0;
 	height = 0;
 	i = 0;
