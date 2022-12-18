@@ -6,7 +6,7 @@
 #    By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 00:02:38 by huaydin           #+#    #+#              #
-#    Updated: 2022/12/18 20:13:00 by huaydin          ###   ########.fr        #
+#    Updated: 2022/12/18 22:52:25 by huaydin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ $(NAME): $(OBJ) $(MLX)
 	@echo Controls: press W A S D to move the Player
 	
 $(OBJ): $(SRC)
-	@$(CC) -c $? -I./$(MLX_DIR)
+	@$(CC) $(CFLAGS) -c $? -I./$(MLX_DIR)
 	@mv *.o src
 
 $(MLX):
