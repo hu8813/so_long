@@ -81,7 +81,7 @@ void	check_files(void)
 		|| access("img/exit.xpm", F_OK | R_OK) == -1)
 	{
 		errno = 2;
-		perror("Error with image file");
+		perror("Error with reading image file");
 		exit(1);
 	}
 }
