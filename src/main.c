@@ -58,7 +58,7 @@ t_main	*main_init(char *path)
 	main->movecount = 0;
 	main->map->map = map_init(path, main);
 	main->mlx = mlx_init();
-	if (main->mlx  == NULL)
+	if (main->mlx == NULL)
 		ft_error("Error with mlx initialisation", main);
 	xpm_to_img(main);
 	main->win = mlx_new_window(main->mlx,
