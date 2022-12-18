@@ -34,32 +34,32 @@ void	write_move_count(t_main *main)
 	free(str2);
 }
 
-static int	draw_map2(t_main *main, int i, int j)
+static int	draw_map2(t_main *main, int y, int x)
 {
-	if (main->map->map[i][j] == '1')
+	if (main->map->map[y][x] == '1')
 		mlx_put_image_to_window(main->mlx, main->win,
-			main->img->wall, j, i);
-	else if (main->map->map[i][j] == '0')
+			main->img->wall, x, y);
+	else if (main->map->map[y][x] == '0')
 		mlx_put_image_to_window(main->mlx, main->win,
-			main->img->way, j, i);
-	else if (main->map->map[i][j] == 'P')
+			main->img->way, x, y);
+	else if (main->map->map[y][x] == 'P')
 	{
-		mlx_put_image_to_window(main->mlx, main->win, main->img->pl, j, i);
-		main->p_y = i;
-		main->p_x = j;
+		mlx_put_image_to_window(main->mlx, main->win, main->img->pl, x, y);
+		main->p_y = y;
+		main->p_x = x;
 	}
-	else if (main->map->map[i][j] == 'E')
+	else if (main->map->map[y][x] == 'E')
 		mlx_put_image_to_window(main->mlx, main->win,
-			main->img->exitd, j, i);
-	else if (main->map->map[i][j] == 'C')
+			main->img->exitd, x, y);
+	else if (main->map->map[y][x] == 'C')
 	{
 		mlx_put_image_to_window(main->mlx, main->win,
-			main->img->coin, j, i);
+			main->img->coin, x, y);
 	}
-	else if (main->map->map[i][j] != '\n')
+	else if (main->map->map[y][x] != '\n')
 		ft_error("Error \n wrong character", main);
-	j++;
-	return (j);
+	x++;
+	return (x);
 }
 
 void	draw_map(t_main *main)
