@@ -42,7 +42,7 @@ To start the game, simply run the executable with a path to map file as paramete
 -   Use the W A S D keys to move the player character
 -   Press the ESC or click (X) to exit
 
-![An example image](screenshot.png){:height="20%" width="20%"}
+![An example screenshot of so_long](screenshot.png)
 
 
 ## Useful Resources
