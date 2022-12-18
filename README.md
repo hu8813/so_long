@@ -42,6 +42,9 @@ To start the game, simply run the executable with a path to map file as paramete
 -   Use the W A S D keys to move the player character
 -   Press the ESC or click (X) to exit
 
+![An example image](screenshot.png){:height="20%" width="20%"}
+
+
 ## Useful Resources
 
 The MinilibX mlx library is a simple X Window System graphics library that is often used in educational contexts to teach basic graphics programming in C. Here are a few resources that may be helpful for learning about and using the MinilibX mlx library:
