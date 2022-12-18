@@ -12,26 +12,26 @@
 
 #include "../inc/so_long.h"
 
-static void	render2(t_main *main, int x, int y, int i)
+static void	render2(t_main *main, int y)
 {
-	int	j;
+	int	x;
 
-	j = 0;
-	while (j < main->map->x)
+	x = 0;
+	while (x < main->map->x)
 	{
-		if (main->map->map[i][j] == '1')
+		if (main->map->map[y][x] == '1')
 			mlx_put_image_to_window(main->mlx, main->win,
-				main->img->wall, j * PIXEL, i * PIXEL);
-		else if (main->map->map[i][j] == '0' || main->map->map[i][j] == 'P')
+				main->img->wall, x * PIXEL, y * PIXEL);
+		else if (main->map->map[y][x] == '0' || main->map->map[y][x] == 'P')
 			mlx_put_image_to_window(main->mlx, main->win,
-				main->img->way, j * PIXEL, i * PIXEL);
-		else if (main->map->map[i][j] == 'E')
+				main->img->way, x * PIXEL, y * PIXEL);
+		else if (main->map->map[y][x] == 'E')
 			mlx_put_image_to_window(main->mlx, main->win,
-				main->img->exitd, j * PIXEL, i * PIXEL);
-		else if (main->map->map[i][j] == 'C')
+				main->img->exitd, x * PIXEL, y * PIXEL);
+		else if (main->map->map[y][x] == 'C')
 			mlx_put_image_to_window(main->mlx, main->win,
-				main->img->coin, j * PIXEL, i * PIXEL);
-		j++;
+				main->img->coin, x * PIXEL, y * PIXEL);
+		x++;
 	}
 }
 
@@ -46,7 +46,7 @@ int	render(t_main *main)
 	y = main->p_y ;
 	while (i < main->map->y)
 	{
-		render2(main, x, y, i);
+		render2(main, i);
 		i++;
 	}
 	mlx_put_image_to_window(main->mlx, main->win, main->img->pl,
