@@ -6,7 +6,7 @@
 /*   By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:04:46 by huaydin           #+#    #+#             */
-/*   Updated: 2022/12/18 22:14:52 by huaydin          ###   ########.fr       */
+/*   Updated: 2022/12/18 22:27:59 by huaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ void				xpm_to_img(t_main *main);
 int					key_event(int key, t_main *main);
 int					render(t_main *main);
 void				write_move_count(t_main *main);
-void				ft_free(t_main *main);
 void				ft_error(char *errorcode, t_main *main);
 void				*ft_calloc(size_t count, size_t size);
 size_t				ft_strlen(const char *s);
