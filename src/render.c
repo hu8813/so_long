@@ -37,20 +37,16 @@ static void	render2(t_main *main, int y)
 
 int	render(t_main *main)
 {
-	int	x;
 	int	y;
-	int	i;
 
-	i = 0;
-	x = main->p_x ;
-	y = main->p_y ;
-	while (i < main->map->y)
+	y = 0;
+	while (y < main->map->y)
 	{
-		render2(main, i);
-		i++;
+		render2(main, y);
+		y++;
 	}
 	mlx_put_image_to_window(main->mlx, main->win, main->img->pl,
-		(x) * PIXEL, (y) * PIXEL);
+		(main->p_x) * PIXEL, (main->p_y) * PIXEL);
 	if (main->coincount == 0
 		&& main->map->map[main->p_y][main->p_x] == 'E')
 		ft_destroy(main);
