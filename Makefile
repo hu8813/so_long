@@ -19,7 +19,7 @@ endif
 ifeq ($(UNAME_S),Darwin)
 	MLX_DIR = minilibx-mac
 	FLAGS = -framework OpenGL -framework AppKit -L./$(MLX_DIR) -lmlx -glldb
-	MLX = $(MLX_DIR)/libmlx.dylib
+	MLX = $(MLX_DIR)/libmlx.a
 endif
 
 NAME = so_long
