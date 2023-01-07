@@ -6,18 +6,18 @@
 #    By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 00:02:38 by huaydin           #+#    #+#              #
-#    Updated: 2023/01/07 15:21:41 by huaydin          ###   ########.fr        #
+#    Updated: 2023/01/07 15:23:59 by huaydin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
-	MLX_DIR = minilibx-linux
-	FLAGS = -lXext -lX11 -I./$(MLX_DIR) -L./$(MLX_DIR) -lmlx
+	MLX = minilibx-linux
+	FLAGS = -lXext -lX11 -I./$(MLX) -L./$(MLX) -lmlx
 endif
 ifeq ($(UNAME_S),Darwin)
-	MLX_DIR = minilibx-mac
-	FLAGS = -framework OpenGL -framework AppKit -I./$(MLX_DIR) -L./$(MLX_DIR) -lmlx
+	MLX = minilibx-mac
+	FLAGS = -framework OpenGL -framework AppKit -I./$(MLX) -L./$(MLX) -lmlx
 endif
 
 NAME = so_long
@@ -31,7 +31,7 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(NAME) clean
 
 $(NAME): $(OBJ)
-	@make -s -C $(MLX_DIR) 
+	@make -s -C $(MLX) 
 	@$(CC) -o $@ $? $(FLAGS) $(CFLAGS)
 	@echo Done...
 	@echo Usage:    ./so_long maps/map.ber
