@@ -36,7 +36,7 @@ This will create an executable file called `so_long`.
 
 To start the game, simply run the executable with a path to map file as parameter:
 
-`./so_long maps/map.ber` 
+`make test`  OR  `./so_long maps/map.ber` 
 
 ## Controls
 
