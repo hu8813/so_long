@@ -6,45 +6,41 @@
 #    By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 00:02:38 by huaydin           #+#    #+#              #
-#    Updated: 2022/12/18 22:52:25 by huaydin          ###   ########.fr        #
+#    Updated: 2023/01/07 15:21:41 by huaydin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
-	FLAGS = -lXext -lX11
 	MLX_DIR = minilibx-linux
-	MLX = $(MLX_DIR)/libmlx.a
+	FLAGS = -lXext -lX11 -I./$(MLX_DIR) -L./$(MLX_DIR) -lmlx
 endif
 ifeq ($(UNAME_S),Darwin)
 	MLX_DIR = minilibx-mac
-	FLAGS = -framework OpenGL -framework AppKit -L./$(MLX_DIR) -lmlx -glldb
-	MLX = $(MLX_DIR)/libmlx.a
+	FLAGS = -framework OpenGL -framework AppKit -I./$(MLX_DIR) -L./$(MLX_DIR) -lmlx
 endif
 
 NAME = so_long
 CC = cc
 SRC = src/main.c src/map.c src/draw.c src/event.c src/render.c src/libft_utils.c
 OBJ = $(SRC:%.c=%.o)
-CFLAGS = -Wall -Wextra -Werror -I./inc -I./$(MLX_DIR)
+CFLAGS = -Wall -Wextra -Werror
 
 .PHONY:		all clean fclean test re
 	 
-all: $(MLX) $(NAME) clean
+all: $(NAME) clean
 
-$(NAME): $(OBJ) $(MLX)
-	@$(CC) -o $@ $? $(MLX) $(FLAGS) $(CFLAGS)
+$(NAME): $(OBJ)
+	@make -s -C $(MLX_DIR) 
+	@$(CC) -o $@ $? $(FLAGS) $(CFLAGS)
 	@echo Done...
 	@echo Usage:    ./so_long maps/map.ber
 	@echo or just:  make test
 	@echo Controls: press W A S D to move the Player
-	
-$(OBJ): $(SRC)
-	@$(CC) $(CFLAGS) -c $? -I./$(MLX_DIR)
-	@mv *.o src
 
-$(MLX):
-	make -s -C $(MLX_DIR) 
+$(OBJ): $(SRC)
+	@$(CC) $(CFLAGS) -c $?
+	@mv *.o src
 
 clean:
 	@rm -rf src/*.o
