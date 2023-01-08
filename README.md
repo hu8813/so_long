@@ -6,13 +6,13 @@ Welcome to so_long, a 2D game written in C which runs both on Mac and Linux!
 ## Requirements
 
 -   A C compiler (such as GCC)
--   in Linux, Libraries: libXext, libX11 are necessary
+-   on Linux, Libraries: libXext, libX11 are necessary
 -   Skip this step on school Pc, as it's allready installed. 
     To install these dependencies on other Linux Pc, run:
     
 `sudo apt-get update && sudo apt-get install xorg libxext-dev zlib1g-dev libbsd-dev`
 
--   in Mac, compiling flags are: -framework OpenGL -framework AppKit
+-   on Mac, compiling flags are: -framework OpenGL -framework AppKit
 
     Makefile will automatically detect OS and set Flags, however program not tested on Mac, put your minilibx-mac library files in this empty directory.
 
