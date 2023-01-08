@@ -22,7 +22,7 @@
 # ifdef __APPLE__
 #  include "../minilibx-mac/mlx.h"
 #  define W_UP 13
-#  define S_DOWN 5
+#  define S_DOWN 1
 #  define A_LEFT 0
 #  define D_RIGHT 2
 #  define ESC 53
