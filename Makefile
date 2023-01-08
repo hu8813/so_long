@@ -13,17 +13,20 @@
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
 	MLX = minilibx-linux
+	EVENT = src/event_linux.c
 	MLX_LIB = $(MLX)/libmlx.a
 	FLAGS = -lXext -lX11 ./$(MLX)/libmlx.a -I./$(MLX) -L./$(MLX) -lmlx
 endif
 ifeq ($(UNAME_S),Darwin)
 	MLX = minilibx-mac
+	EVENT = src/event_mac.c
 	FLAGS = -framework OpenGL -framework AppKit -I./$(MLX) -L./$(MLX) -lmlx
 endif
 
 NAME = so_long
 CC = cc
-SRC = src/main.c src/map.c src/draw.c src/event.c src/render.c src/libft_utils.c
+SRC = src/main.c src/map.c src/draw.c src/render.c src/libft_utils.c \
+	$(EVENT)
 OBJ = $(SRC:%.c=%.o)
 CFLAGS = -Wall -Wextra
 
