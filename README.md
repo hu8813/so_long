@@ -1,7 +1,7 @@
 
 # so_long
 
-Welcome to so_long, a 2D game written in C!
+Welcome to so_long, a 2D game written in C which runs both on Mac and Linux!
 
 ## Requirements
 
