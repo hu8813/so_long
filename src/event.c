@@ -76,7 +76,8 @@ int	ft_destroy(t_main *main)
 	mlx_destroy_image(main->mlx, main->img->exitd);
 	mlx_destroy_image(main->mlx, main->img->coin);
 	mlx_destroy_window(main->mlx, main->win);
-	mlx_destroy_display(main->mlx);
+	if (ESC == 65307)
+		mlx_destroy_display(main->mlx);
 	y = 0;
 	while (y < main->map->y)
 		free(main->map->map[y++]);
