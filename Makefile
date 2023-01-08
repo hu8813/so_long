@@ -25,7 +25,7 @@ NAME = so_long
 CC = cc
 SRC = src/main.c src/map.c src/draw.c src/event.c src/render.c src/libft_utils.c
 OBJ = $(SRC:%.c=%.o)
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra
 
 .PHONY:		all clean fclean test re
 
