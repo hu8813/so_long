@@ -14,7 +14,9 @@ Welcome to so_long, a 2D game written in C!
 
 -   in Mac, compiling flags are: -framework OpenGL -framework AppKit
 
-    Makefile will automatically detect OS and set Flags, however program not tested on Mac, put your minilibx-mac library files in this empty directory
+    Makefile will automatically detect OS and set Flags, however program not tested on Mac, put your minilibx-mac library files in this empty directory.
+
+The mlx_destroy_display function is only available on Linux, so in src/event.c it will be skipped if running on Mac. So that Valgrind will not have any memory leak.
 
 ## Installation
 
