@@ -23,31 +23,31 @@ void	ft_error(char *errorcode, t_main *main)
 
 void	xpm_to_img(t_main *main)
 {
-	int	tmp;
-
 	main->img->pr = mlx_xpm_file_to_image(
-			main->mlx, "./img/right.xpm", &tmp, &tmp);
+			main->mlx, "./img/right.xpm", &main->tmp, &main->tmp);
 	main->img->pl = main->img->pr;
 	main->img->ple = mlx_xpm_file_to_image(
-			main->mlx, "./img/left.xpm", &tmp, &tmp);
+			main->mlx, "./img/left.xpm", &main->tmp, &main->tmp);
 	main->img->pu = mlx_xpm_file_to_image(
-			main->mlx, "./img/up.xpm", &tmp, &tmp);
+			main->mlx, "./img/up.xpm", &main->tmp, &main->tmp);
 	main->img->pd = mlx_xpm_file_to_image(
-			main->mlx, "./img/down.xpm", &tmp, &tmp);
+			main->mlx, "./img/down.xpm", &main->tmp, &main->tmp);
 	main->img->way = mlx_xpm_file_to_image(
-			main->mlx, "./img/way.xpm", &tmp, &tmp);
+			main->mlx, "./img/way.xpm", &main->tmp, &main->tmp);
 	main->img->wall = mlx_xpm_file_to_image(
-			main->mlx, "./img/wall.xpm", &tmp, &tmp);
+			main->mlx, "./img/wall.xpm", &main->tmp, &main->tmp);
 	main->img->exitd = mlx_xpm_file_to_image(
-			main->mlx, "./img/exit.xpm", &tmp, &tmp);
+			main->mlx, "./img/exit.xpm", &main->tmp, &main->tmp);
+	main->img->enemy = mlx_xpm_file_to_image(
+			main->mlx, "./img/enemy.xpm", &main->tmp, &main->tmp);
 	main->img->coin = mlx_xpm_file_to_image(
-			main->mlx, "./img/coin.xpm", &tmp, &tmp);
-	if (main->img->pr == NULL || main->img->pl == NULL
-		|| main->img->ple == NULL || main->img->pu == NULL
-		|| main->img->pd == NULL || main->img->way == NULL
-		|| main->img->wall == NULL || main->img->exitd == NULL
-		|| main->img->coin == NULL)
-		ft_error("Error with image initialisation", main);
+			main->mlx, "./img/coin.xpm", &main->tmp, &main->tmp);
+	if (main->img->pr == NULL || main->img->ple == NULL
+		|| main->img->wall == NULL || main->img->pd == NULL
+		|| main->img->way == NULL || main->img->pu == NULL
+		|| main->img->exitd == NULL || main->img->coin == NULL
+		|| main->img->pl == NULL)
+		ft_error("Error with image initialization", main);
 }
 
 t_main	*main_init(char *path)
@@ -78,6 +78,7 @@ void	check_files(void)
 		|| access("img/right.xpm", F_OK | R_OK) == -1
 		|| access("img/up.xpm", F_OK | R_OK) == -1
 		|| access("img/down.xpm", F_OK | R_OK) == -1
+		|| access("img/enemy.xpm", F_OK | R_OK) == -1
 		|| access("img/exit.xpm", F_OK | R_OK) == -1)
 	{
 		errno = 2;

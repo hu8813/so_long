@@ -6,7 +6,7 @@
 /*   By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:04:46 by huaydin           #+#    #+#             */
-/*   Updated: 2022/12/18 22:27:59 by huaydin          ###   ########.fr       */
+/*   Updated: 2023/01/26 15:25:23 by huaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_img
 	void			*way;
 	void			*coin;
 	void			*exitd;
+	void			*enemy;
 	void			*pr;
 	void			*pl;
 	void			*ple;
@@ -70,6 +71,7 @@ typedef struct s_main
 	int				movecount;
 	int				playercount;
 	int				exitcount;
+	int				tmp;
 	t_map			*map;
 	t_img			*img;
 }					t_main;

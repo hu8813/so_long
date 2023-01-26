@@ -49,13 +49,11 @@ static int	draw_map2(t_main *main, int y, int x)
 		main->p_x = x;
 	}
 	else if (main->map->map[y][x] == 'E')
-		mlx_put_image_to_window(main->mlx, main->win,
-			main->img->exitd, x, y);
+		mlx_put_image_to_window(main->mlx, main->win, main->img->exitd, x, y);
 	else if (main->map->map[y][x] == 'C')
-	{
-		mlx_put_image_to_window(main->mlx, main->win,
-			main->img->coin, x, y);
-	}
+		mlx_put_image_to_window(main->mlx, main->win, main->img->coin, x, y);
+	else if (main->map->map[y][x] == 'X')
+		mlx_put_image_to_window(main->mlx, main->win, main->img->enemy, x, y);
 	else if (main->map->map[y][x] != '\n')
 		ft_error("Error \n wrong character", main);
 	x++;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event.c                                            :+:      :+:    :+:   */
+/*   event_mac.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:03:02 by huaydin           #+#    #+#             */
-/*   Updated: 2022/12/12 00:03:02 by huaydin          ###   ########.fr       */
+/*   Updated: 2023/01/26 14:00:15 by huaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ static int	check_esc(t_main *main, int key)
 
 	if (key == ESC)
 		ft_destroy(main);
+	if (main->map->map[main->p_y][main->p_x] == 'X')
+	{
+		ft_destroy(main);
+	}
 	if (main->map->map[main->p_y][main->p_x] == 'C')
 	{
 		main->map->map[main->p_y][main->p_x] = '0';

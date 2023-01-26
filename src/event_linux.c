@@ -18,6 +18,10 @@ static int	check_esc(t_main *main, int key)
 
 	if (key == ESC)
 		ft_destroy(main);
+	if (main->map->map[main->p_y][main->p_x] == 'X')
+	{
+		ft_destroy(main);
+	}
 	if (main->map->map[main->p_y][main->p_x] == 'C')
 	{
 		main->map->map[main->p_y][main->p_x] = '0';
@@ -74,6 +78,7 @@ int	ft_destroy(t_main *main)
 	mlx_destroy_image(main->mlx, main->img->wall);
 	mlx_destroy_image(main->mlx, main->img->way);
 	mlx_destroy_image(main->mlx, main->img->exitd);
+	mlx_destroy_image(main->mlx, main->img->enemy);
 	mlx_destroy_image(main->mlx, main->img->coin);
 	mlx_destroy_window(main->mlx, main->win);
 	mlx_destroy_display(main->mlx);

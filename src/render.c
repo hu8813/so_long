@@ -28,6 +28,9 @@ static void	render2(t_main *main, int y)
 		else if (main->map->map[y][x] == 'E')
 			mlx_put_image_to_window(main->mlx, main->win,
 				main->img->exitd, x * PIXEL, y * PIXEL);
+		else if (main->map->map[y][x] == 'X')
+			mlx_put_image_to_window(main->mlx, main->win,
+				main->img->enemy, x * PIXEL, y * PIXEL);
 		else if (main->map->map[y][x] == 'C')
 			mlx_put_image_to_window(main->mlx, main->win,
 				main->img->coin, x * PIXEL, y * PIXEL);
