@@ -6,7 +6,7 @@
 /*   By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 03:09:45 by huaydin           #+#    #+#             */
-/*   Updated: 2023/01/27 12:59:03 by huaydin          ###   ########.fr       */
+/*   Updated: 2023/01/27 13:07:25 by huaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	ft_floodfill(t_main *main, int x, int y, int *count_c)
 	if (x <= 0 || x >= main->map->x || y <= 0 || y >= main->map->y
 		|| main->map->map[y][x] == '1' || main->map->map[y][x] == 'c'
 		|| main->map->map[y][x] == 'o' || main->map->map[y][x] == 'e'
-		|| main->map->map[y][x] == 'E' || main->map->map[y][x] == 'x')
+		|| main->map->map[y][x] == 'E' || main->map->map[y][x] == 'X')
 	{
 		if (main->map->map[y][x] == 'E')
 			main->exitflag = 1;
@@ -30,8 +30,6 @@ static void	ft_floodfill(t_main *main, int x, int y, int *count_c)
 	}
 	else if (main->map->map[y][x] == '0')
 		main->map->map[y][x] = 'o';
-	else if (main->map->map[y][x] == 'X')
-		main->map->map[y][x] = 'x';
 	ft_floodfill(main, x, (y + 1), count_c);
 	ft_floodfill(main, x, (y - 1), count_c);
 	ft_floodfill(main, (x + 1), y, count_c);
@@ -54,8 +52,6 @@ static void	ft_restore(t_main *main)
 				main->map->map[y][x] = 'C';
 			else if (main->map->map[y][x] == 'e')
 				main->map->map[y][x] = 'E';
-			else if (main->map->map[y][x] == 'x')
-				main->map->map[y][x] = 'X';
 			else if (main->map->map[y][x] == 'o')
 				main->map->map[y][x] = '0';
 			x++;
