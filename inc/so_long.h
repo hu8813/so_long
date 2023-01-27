@@ -6,7 +6,7 @@
 /*   By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:04:46 by huaydin           #+#    #+#             */
-/*   Updated: 2023/01/26 15:25:23 by huaydin          ###   ########.fr       */
+/*   Updated: 2023/01/27 03:11:06 by huaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,14 @@ typedef struct s_main
 	int				playercount;
 	int				exitcount;
 	int				tmp;
+	int				exitflag;
 	t_map			*map;
 	t_img			*img;
 }					t_main;
 
 t_main				*main_init(char *path);
 char				**map_init(char *path, t_main *main);
-void				map_check(t_main *main);
+void				ft_map_check(t_main *main);
 void				draw_map(t_main *main);
 void				xpm_to_img(t_main *main);
 int					key_event(int key, t_main *main);

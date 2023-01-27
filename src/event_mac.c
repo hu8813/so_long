@@ -6,16 +6,25 @@
 /*   By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:03:02 by huaydin           #+#    #+#             */
-/*   Updated: 2023/01/26 14:00:15 by huaydin          ###   ########.fr       */
+/*   Updated: 2023/01/27 11:12:12 by huaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-static int	check_esc(t_main *main, int key)
+static void	write_move_cnt(int cnt)
 {
 	char	*move;
 
+	move = ft_itoa(cnt);
+	write(1, "Move count: ", 12);
+	write(1, move, ft_strlen(move));
+	write(1, "\n", 1);
+	free(move);
+}
+
+static int	check_esc(t_main *main, int key)
+{
 	if (key == ESC)
 		ft_destroy(main);
 	if (main->map->map[main->p_y][main->p_x] == 'X')
@@ -26,14 +35,6 @@ static int	check_esc(t_main *main, int key)
 	{
 		main->map->map[main->p_y][main->p_x] = '0';
 		main->coincount--;
-	}
-	if (key == W_UP || key == A_LEFT || key == S_DOWN || key == D_RIGHT)
-	{
-		move = ft_itoa(main->movecount);
-		write(1, "Move count: ", 12);
-		write(1, move, ft_strlen(move));
-		write(1, "\n", 1);
-		free(move);
 	}
 	return (0);
 }

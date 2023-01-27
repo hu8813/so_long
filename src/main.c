@@ -15,7 +15,9 @@
 void	ft_error(char *errorcode, t_main *main)
 {
 	errno = 2;
-	perror(errorcode);
+	while (*errorcode)
+		write(2, errorcode++, 1);
+	write(2, "\n", 1);
 	if (main)
 		ft_destroy(main);
 	exit(1);
@@ -100,7 +102,7 @@ int	main(int argc, char **argv)
 	}
 	check_files();
 	main = main_init(argv[1]);
-	map_check(main);
+	ft_map_check(main);
 	draw_map(main);
 	mlx_hook(main->win, 2, 1, key_event, main);
 	mlx_hook(main->win, CLOSE, 0, ft_destroy, main);

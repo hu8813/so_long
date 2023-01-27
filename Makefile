@@ -6,7 +6,7 @@
 #    By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 00:02:38 by huaydin           #+#    #+#              #
-#    Updated: 2023/01/07 15:23:59 by huaydin          ###   ########.fr        #
+#    Updated: 2023/01/27 03:23:14 by huaydin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ endif
 NAME = so_long
 CC = cc
 SRC = src/main.c src/map.c src/draw.c src/render.c src/libft_utils.c \
-	$(EVENT)
+	src/map_check.c $(EVENT)
 OBJ = $(SRC:%.c=%.o)
 CFLAGS = -Wall -Wextra
 

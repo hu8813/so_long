@@ -16,8 +16,8 @@ static void	render2(t_main *main, int y)
 {
 	int	x;
 
-	x = 0;
-	while (x < main->map->x)
+	x = -1;
+	while (++x < main->map->x)
 	{
 		if (main->map->map[y][x] == '1')
 			mlx_put_image_to_window(main->mlx, main->win,
@@ -28,13 +28,15 @@ static void	render2(t_main *main, int y)
 		else if (main->map->map[y][x] == 'E')
 			mlx_put_image_to_window(main->mlx, main->win,
 				main->img->exitd, x * PIXEL, y * PIXEL);
-		else if (main->map->map[y][x] == 'X')
-			mlx_put_image_to_window(main->mlx, main->win,
-				main->img->enemy, x * PIXEL, y * PIXEL);
 		else if (main->map->map[y][x] == 'C')
 			mlx_put_image_to_window(main->mlx, main->win,
 				main->img->coin, x * PIXEL, y * PIXEL);
-		x++;
+		else if (main->map->map[y][x] == 'X' && (main->p_x + main->p_y) % 3)
+			mlx_put_image_to_window(main->mlx, main->win,
+				main->img->enemy, x * PIXEL, y * PIXEL);
+		else
+			mlx_put_image_to_window(main->mlx, main->win,
+				main->img->way, x * PIXEL, y * PIXEL);
 	}
 }
 
