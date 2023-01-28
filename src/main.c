@@ -49,7 +49,7 @@ void	xpm_to_img(t_main *main)
 		|| main->img->way == NULL || main->img->pu == NULL
 		|| main->img->exitd == NULL || main->img->coin == NULL
 		|| main->img->pl == NULL)
-		ft_error("Error with image initialization", main);
+		ft_error("Error\nImage initialization failed", main);
 }
 
 t_main	*main_init(char *path)
@@ -64,7 +64,7 @@ t_main	*main_init(char *path)
 	main->map->map = map_init(path, main);
 	main->mlx = mlx_init();
 	if (main->mlx == NULL)
-		ft_error("Error with mlx initialisation", main);
+		ft_error("Error\nMlx initialization failed", main);
 	xpm_to_img(main);
 	main->win = mlx_new_window(main->mlx,
 			main->map->x * PIXEL, main->map->y * PIXEL, "so_long");
@@ -84,7 +84,7 @@ void	check_files(void)
 		|| access("img/exit.xpm", F_OK | R_OK) == -1)
 	{
 		errno = 2;
-		perror("Error with reading image file");
+		perror("Error\nFailed eading image file");
 		exit(1);
 	}
 }
@@ -97,7 +97,7 @@ int	main(int argc, char **argv)
 		|| !ft_strncmp(argv[1] + ft_strlen(argv[1]) - 5, ".ber", 4))
 	{
 		errno = 2;
-		perror("Usage: ./so_long maps/map.ber\nError with map (.ber) file");
+		perror("Error\n Usage: ./so_long maps/map.ber\n wrong map (.ber) file");
 		exit(1);
 	}
 	check_files();

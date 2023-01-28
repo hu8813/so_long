@@ -6,7 +6,7 @@
 /*   By: huaydin <huaydin@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 09:37:15 by huaydin           #+#    #+#             */
-/*   Updated: 2023/01/28 09:37:16 by huaydin          ###   ########.fr       */
+/*   Updated: 2023/01/28 17:09:04 by huaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ static void	ft_check_valid_map_path(t_main *main)
 	count_c = main->coincount;
 	ft_floodfill(main, main->p_x, main->p_y, &count_c);
 	if (count_c != 0)
-		ft_error("No valid Path, access to Coin is blocked", main);
+		ft_error("Error\nNo valid Path, access to Coin is blocked", main);
 	ft_restore(main);
 	if (main->exitflag == 0)
-		ft_error("No valid Path, access to Exit is blocked", main);
+		ft_error("Error\nNo valid Path, access to Exit is blocked", main);
 	return ;
 }
 
