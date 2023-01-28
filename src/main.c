@@ -97,7 +97,7 @@ int	main(int argc, char **argv)
 		|| !ft_strncmp(argv[1] + ft_strlen(argv[1]) - 5, ".ber", 4))
 	{
 		errno = 2;
-		perror("Error\n Usage: ./so_long maps/map.ber\n wrong map (.ber) file");
+		perror("Error\nUsage: ./so_long maps/map.ber\n wrong map (.ber) file");
 		exit(1);
 	}
 	check_files();
