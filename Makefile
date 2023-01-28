@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+         #
+#    By: huaydin <huaydin@student.42vienna.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/12/12 00:02:38 by huaydin           #+#    #+#              #
-#    Updated: 2023/01/27 03:23:14 by huaydin          ###   ########.fr        #
+#    Created: 2023/01/28 09:37:49 by huaydin           #+#    #+#              #
+#    Updated: 2023/01/28 09:37:54 by huaydin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
