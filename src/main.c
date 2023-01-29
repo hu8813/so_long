@@ -105,7 +105,7 @@ int	main(int argc, char **argv)
 	ft_map_check(main);
 	draw_map(main);
 	mlx_hook(main->win, 2, 1, key_event, main);
-	mlx_hook(main->win, CLOSE, 0, ft_destroy, main);
+	mlx_hook(main->win, 17, 0, ft_destroy, main);
 	mlx_loop_hook(main->mlx, render, main);
 	mlx_loop(main->mlx);
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: huaydin <huaydin@student.42vienna.com>     +#+  +:+       +#+        */
+/*   By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:04:46 by huaydin           #+#    #+#             */
-/*   Updated: 2023/01/28 09:34:34 by huaydin          ###   ########.fr       */
+/*   Updated: 2023/01/29 16:59:30 by huaydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 #  define A_LEFT 0
 #  define D_RIGHT 2
 #  define ESC 53
-#  define CLOSE 17
 # endif
 # ifdef __linux__
 #  include "../minilibx-linux/mlx.h"
@@ -35,7 +34,6 @@
 #  define A_LEFT 97
 #  define D_RIGHT 100
 #  define ESC 65307
-#  define CLOSE 17
 # endif
 
 # define PIXEL 64

@@ -6,7 +6,7 @@
 #    By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 09:37:49 by huaydin           #+#    #+#              #
-#    Updated: 2023/01/29 16:50:48 by huaydin          ###   ########.fr        #
+#    Updated: 2023/01/29 18:48:56 by huaydin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ CC = cc
 SRC = src/main.c src/map.c src/draw.c src/render.c src/libft_utils.c \
 	src/map_check.c $(EVENT)
 OBJ = $(SRC:%.c=%.o)
-CFLAGS = -Wall -Wextra
+CFLAGS = -Wall -Wextra -Werror
 
 .PHONY:		all clean fclean test re
 
