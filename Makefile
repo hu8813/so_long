@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: huaydin <huaydin@student.42vienna.com>     +#+  +:+       +#+         #
+#    By: huaydin <huaydin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 09:37:49 by huaydin           #+#    #+#              #
-#    Updated: 2023/01/28 09:37:54 by huaydin          ###   ########.fr        #
+#    Updated: 2023/01/29 16:50:48 by huaydin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,10 +32,10 @@ CFLAGS = -Wall -Wextra
 
 .PHONY:		all clean fclean test re
 
-all: $(NAME) clean
+all: $(NAME)
 
 $(NAME): $(OBJ)
-	@make -s -C $(MLX)
+	@make -C $(MLX)
 	@$(CC) -o $@ $? $(MLX_LIB) $(FLAGS) $(CFLAGS)
 	@echo Done...
 	@echo Usage:    ./so_long maps/map.ber
@@ -48,9 +48,10 @@ $(OBJ): $(SRC)
 
 clean:
 	@rm -rf src/*.o
+	@make clean -C $(MLX)
 
 fclean: clean
-	@rm -rf $(NAME) 
+	@rm -rf $(NAME)
 
 re: fclean all
 	@rm -rf src/*.o
